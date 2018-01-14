@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style>
+     /*注意：案例中使用的图片在页面下方提供有下载*/
+    /*在开发阶段，为div加入边框，便于调整和判断div的位置*/
+    div{
+        border: 1px solid blue;
+    }
+    body{
+        margin: 0px;
+        padding: 0px;
+    }
+    /*主面板div样式*/
+    #panel{   
+        width: 980px;
+        margin: 0px auto;/*div居中显示*/
+    }
+    /*顶部div样式*/
+    #header{
+        /*设置div的背景图片*/
+        background-image: url(images/h_bg.jpg);
+        height: 132px;
+    }
+    /*网站logo DIV样式*/
+    #logo{
+        width: 290px;
+        height: 98px;
+    }
+    /*导航主菜单DIV样式*/
+    #menu{
+        height: 32px;
+    }
+    /*无序列表与列表项消除间距*/
+    ul, li{
+        margin: 0px;
+        padding: 0px;
+    }
+    /*列表项样式*/
+    #menu li{
+        float: left; /*所有列表项水平排列*/
+        width: 84px;
+        height: 32px;
+        text-align: center;
+        list-style:none; /*去掉列表项的样式(小圆点)*/
+        line-height: 32px;/*行高*/
+        font-weight: bold;/*字体加粗*/
+        font-size: 13px;
+    }
+   /*超链接样式*/
+    #menu a, #menu a:hover{
+        color: #333333; /*深灰色*/
+        text-decoration: none;/*去下划线*/
+        height: 32px;
+        width: 84px;
+        /*
+        将a标签设置为"块级呈现"，当鼠标移动到
+        a标签上时便于呈现出全尺寸的高亮背景图片
+        */
+        display: block;
+    }
+    /*当鼠标移动到a标签上时的样式*/
+    #menu a:hover{
+        background-image: url(images/nav_bg.png);
+        background-repeat: no-repeat;/*背景图片不平铺*/
+        background-position: center center;/*背景图片水平、垂直居中*/
+    }
+
+
+    </style>
+
+
+</head>
+<body>
+    <div id="panel">        
+    <div id="header"> 
+        <div id="logo"></div> 
+        <div id="menu"> 
+            <ul> 
+                <li><a href="#">首页</a></li> 
+                <li><a href="#">家用电器</a></li> 
+                <li><a href="#">手机数码</a></li> 
+                <li><a href="#">日用百货</a></li> 
+                <li><a href="#">书籍</a></li> 
+                <li><a href="#">帮助中心</a></li> 
+                <li><a href="#">免费开店</a></li> 
+                <li><a href="#">全球咨询</a></li> 
+            </ul> 
+        </div> 
+    </div>        
+</div> 
+</body>
+</html>

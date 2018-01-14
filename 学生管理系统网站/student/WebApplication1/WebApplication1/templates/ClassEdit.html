@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>班级编辑</title>
+    <script type="text/javascript" src="../script/check.js"></script>
+    <script type="text/javascript" src="../script/ajax.js"></script>
+    <script type="text/javascript" src="../script/json2.js"></script>
+    <script type="text/javascript">
+        function checkClass(th) {
+            var id = th.id;
+            if (id == "classname") {
+                if (document.getElementById(id).value == "") {
+                    document.getElementById("classnameMS").innerHTML = "班级名称不能为空！";
+                    document.getElementById("store").disabled = "disabled";
+                }
+                else {
+                    if (checkClassName(th)) {
+                        document.getElementById("classnameMS").innerHTML = "";
+                        document.getElementById("store").disabled = "";
+                    }
+                    else {
+                        document.getElementById("classnameMS").innerHTML = "请输入符合规范的班级名称！";
+                        document.getElementById("store").disabled = "disabled";
+                    }
+                }
+            }
+            else if (id == "classnumber") {
+                if (checkClassNumber(th)) {
+                    document.getElementById("classnumberMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("classnumberMS").innerHTML = "请输入符合规范的教室号！";
+                }
+            }
+        }
+
+        function load() {
+                //obj.options[index].text;          //拿到选中项options的text： 
+                ajax("../Query.ashx?action=" + "classToTname", function (resText) {
+                    var tnames = JSON.parse(resText);
+                    var obj = document.getElementById("tname");
+                    var index = obj.selectedIndex;          // selectedIndex代表的是你所选中项的index
+                    var myselect = obj.options[index].value;        //拿到选中项options的value：  
+                    for (var i = 0; i < tnames.length; i++) {
+                        var t = tnames[i];
+                        if(t.id!=myselect)
+                            obj.options.add(new Option(t.tname, t.tid));
+                    }
+                });
+        }
+
+        function sub() {
+            if (document.getElementById("classname").value == "") {
+                alert("班级名称不能为空！");
+            }
+        }
+    </script>
+</head>
+<body onload="load()">
+    <form action="../ClassEdit.ashx" method="post">
+    <input type="hidden" name="UpdateID" value="$Data.Class1.cid" />
+        <table>
+            <tr> <td>班级名称：</td> <td><input type="text" name="classname"  id="classname" onblur="checkClass(this)" value="$Data.Class1.classname"/></td>
+                   <td><font color="red" id="classnameMS"></font></td> </tr>
+            <tr> <td>教室号：</td> <td><input type="text" name="classnumber" id="classnumber" onblur="checkClass(this)" value="$Data.Class1.classnumber"/></td>
+                  <td><font color="red" id="classnumberMS"></font></td>  </tr>
+            <tr> <td>班主任老师：</td> 
+                <td><select name="tname" id="tname" style="height:25px;">
+                    <option value="$Data.Class1.tid">$Data.Class1.tname</option>
+                    </select>
+                </td> </tr>
+            <tr> <td><input  type="submit" id="store" onclick="sub()" value="确认" /></td> </tr>
+        </table>
+    </form>
+</body>
+</html>

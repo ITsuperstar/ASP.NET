@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7EA9DD3E-B1F3-4465-BA52-104A770261BE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>video</RootNamespace>
+    <AssemblyName>video</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NVelocity">
+      <HintPath>.\NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\amazeui.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\lightbox.css" />
+    <Content Include="css\login.css" />
+    <Content Include="css\prettySticky.css" />
+    <Content Include="css\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="images\001.jpg" />
+    <Content Include="images\002.jpg" />
+    <Content Include="images\003.jpg" />
+    <Content Include="images\004.jpg" />
+    <Content Include="images\005.jpg" />
+    <Content Include="images\006.jpg" />
+    <Content Include="images\007.jpg" />
+    <Content Include="images\008.jpg" />
+    <Content Include="images\009.jpg" />
+    <Content Include="images\010.jpg" />
+    <Content Include="images\011.jpg" />
+    <Content Include="images\012.jpg" />
+    <Content Include="images\013.jpg" />
+    <Content Include="images\014.jpg" />
+    <Content Include="images\015.jpg" />
+    <Content Include="images\016.jpg" />
+    <Content Include="images\017.jpg" />
+    <Content Include="images\018.jpg" />
+    <Content Include="images\019.jpg" />
+    <Content Include="images\020.jpg" />
+    <Content Include="images\021.jpg" />
+    <Content Include="images\022.jpg" />
+    <Content Include="images\023.jpg" />
+    <Content Include="images\024.jpg" />
+    <Content Include="images\025.jpg" />
+    <Content Include="images\026.jpg" />
+    <Content Include="images\027.jpg" />
+    <Content Include="images\028.jpg" />
+    <Content Include="images\029.jpg" />
+    <Content Include="images\030.jpg" />
+    <Content Include="images\1.jpg" />
+    <Content Include="images\a.jpg" />
+    <Content Include="images\close.png" />
+    <Content Include="images\demo-1-bg.jpg" />
+    <Content Include="images\f1.jpg" />
+    <Content Include="images\f2.jpg" />
+    <Content Include="images\f3.jpg" />
+    <Content Include="images\g1.jpg" />
+    <Content Include="images\g2.jpg" />
+    <Content Include="images\g3.jpg" />
+    <Content Include="images\g4.jpg" />
+    <Content Include="images\g5.jpg" />
+    <Content Include="images\g6.jpg" />
+    <Content Include="images\g7.jpg" />
+    <Content Include="images\g8.jpg" />
+    <Content Include="images\icon2.png" />
+    <Content Include="images\icons.png" />
+    <Content Include="images\img1.jpg" />
+    <Content Include="images\img2.jpg" />
+    <Content Include="images\login\bg.jpg" />
+    <Content Include="images\login\bg2.jpg" />
+    <Content Include="images\login\logo.svg" />
+    <Content Include="images\login\password.png" />
+    <Content Include="images\login\user.png" />
+    <Content Include="images\login\usererror.png" />
+    <Content Include="images\login\userinit.png" />
+    <Content Include="images\login\userright.png" />
+    <Content Include="images\login\yzm.svg" />
+    <Content Include="images\login\yzm1.svg" />
+    <Content Include="images\login_ico.png" />
+    <Content Include="images\next.png" />
+    <Content Include="images\prev.png" />
+    <Content Include="images\quote.png" />
+    <Content Include="images\slid.jpg" />
+    <Content Include="images\t1.jpg" />
+    <Content Include="images\t2.jpg" />
+    <Content Include="images\t3.jpg" />
+    <Content Include="images\t4.jpg" />
+    <Content Include="js\ajax.js" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\jquery-1.11.1.min.js" />
+    <Content Include="js\jquery.flexslider.js" />
+    <Content Include="js\json2.js" />
+    <Content Include="js\lightbox-plus-jquery.min.js" />
+    <Content Include="js\location\GlobalProvinces_extend.js" />
+    <Content Include="js\location\GlobalProvinces_main.js" />
+    <Content Include="js\location\initLocation.js" />
+    <Content Include="js\location\jquery.js" />
+    <Content Include="js\loginTweenLite.min.js" />
+    <Content Include="js\myjs\ajax1.js" />
+    <Content Include="js\myjs\check.js" />
+    <Content Include="js\prettySticky.js" />
+    <Content Include="js\responsiveslides.min.js" />
+    <Content Include="templates\codes.html" />
+    <Content Include="templates\contact.html" />
+    <Content Include="templates\detail.html" />
+    <Content Include="templates\help.html" />
+    <Content Include="templates\index.html" />
+    <Content Include="templates\login.html" />
+    <Content Include="templates\old\about.html" />
+    <Content Include="templates\old\checkout.html" />
+    <Content Include="templates\old\contact.html" />
+    <Content Include="templates\old\faqs.html" />
+    <Content Include="templates\old\index.html" />
+    <Content Include="templates\old\login.html" />
+    <Content Include="templates\old\productclass.html" />
+    <Content Include="templates\old\productdetail.html" />
+    <Content Include="templates\old\products.html" />
+    <Content Include="templates\old\shoppingcart.html" />
+    <Content Include="templates\old\zhifu.html" />
+    <Content Include="templates\recommend.html" />
+    <Content Include="templates\search.html" />
+    <Content Include="templates\user.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CheckUser.ashx.cs">
+      <DependentUpon>CheckUser.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="contact.ashx.cs">
+      <DependentUpon>contact.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="contactSubmit.ashx.cs">
+      <DependentUpon>contactSubmit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="createImg.ashx.cs">
+      <DependentUpon>createImg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="detail.ashx.cs">
+      <DependentUpon>detail.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="help.ashx.cs">
+      <DependentUpon>help.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="index.ashx.cs">
+      <DependentUpon>index.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="isLogin.ashx.cs">
+      <DependentUpon>isLogin.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.ashx.cs">
+      <DependentUpon>Logout.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="recommend.ashx.cs">
+      <DependentUpon>recommend.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="reviewSubmit.ashx.cs">
+      <DependentUpon>reviewSubmit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="search.ashx.cs">
+      <DependentUpon>search.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SessionHelper.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="user.ashx.cs">
+      <DependentUpon>user.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\Abel-Regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\OpenSans-Regular.ttf" />
+    <Content Include="index.ashx" />
+    <Content Include="recommend.ashx" />
+    <Content Include="contact.ashx" />
+    <Content Include="help.ashx" />
+    <Content Include="detail.ashx" />
+    <Content Include="search.ashx" />
+    <Content Include="user.ashx" />
+    <Content Include="createImg.ashx" />
+    <Content Include="CheckUser.ashx" />
+    <Content Include="Logout.ashx" />
+    <Content Include="isLogin.ashx" />
+    <Content Include="Login.ashx" />
+    <Content Include="contactSubmit.ashx" />
+    <Content Include="reviewSubmit.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\login\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:12911/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

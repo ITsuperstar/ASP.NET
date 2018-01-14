@@ -1,0 +1,15 @@
+﻿.pagecode a{
+    font-size:15px;
+}
+
+
+/*侧边信息栏*/  
+.tip{ 
+    position:fixed; 
+    top:100px;
+    right:0px;
+    background-color:#fff; 
+    min-height: 20%;
+    z-index: 1000; 
+    width: auto;
+}

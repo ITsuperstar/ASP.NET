@@ -1,0 +1,44 @@
+/* CSS Document */
+.outside {
+position:fixed;
+top:50%;
+left:50%;}
+
+/*----- out设计-------------------*/
+.out {
+background-color:#66CCFF;
+padding: 0 40px 40px 40px;
+border:1px solid #000000;
+width:400px;
+height:300px;
+position:absolute;
+top:-180px;
+left:-280px;}
+.out .head {
+text-align:center;
+font-size:2em;
+border-bottom:1px dotted #3366CC;}
+.out footer {
+text-align:center;
+color:#FFFFFF;
+background-color:#666666;}
+
+/*------in设计-------------------*/
+.in table {
+width:100%;}
+.in table th {
+text-align:right;}
+.in table td {
+text-align:left;
+}
+.in table td input {
+width:100%;
+}
+.in p {
+text-align:center;}
+.in p input {
+background-color:#0099CC;
+text-align:center;
+width:100px;}
+
+

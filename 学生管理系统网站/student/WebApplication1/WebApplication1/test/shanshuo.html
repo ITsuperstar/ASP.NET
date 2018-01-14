@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>js实现文字闪烁特效</title>
+    <script type="text/javascript">
+        var flag = 0;
+        function start() {
+            var text = document.getElementById("myDiv");
+            if (!flag) {
+                text.style.color = "red";
+                text.style.background = "#0000ff";
+                flag = 1;
+            } else {
+                text.style.color = "";
+                text.style.background = "";
+                flag = 0;
+            }
+            setTimeout("start()", 500);
+        }
+</script>
+</head>
+
+ <body onload="start()">
+ <span id="myDiv">css的世界是如此的精彩！</span>
+ </body>
+</html>

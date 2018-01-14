@@ -1,0 +1,288 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>影碟出租系统 | 用户中心</title>
+	<!--mobile apps-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Rental Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+	</script>
+	<!--mobile apps-->
+	<!--Custom Theme files -->
+	<link href="/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="/css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="/css/prettySticky.css" type="text/css">
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<!-- //js -->
+	<!-- start-smoth-scrolling-->
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+	</script>
+	<!--//end-smoth-scrolling-->
+
+
+
+</head>
+
+<body>
+	<!--banner-->
+	<div id="home" class="banner about-banner">
+		<div class="banner-info">
+			<!--navigation-->
+			<div class="top-nav">
+				<nav>
+					<div class="container">
+						<div class="navbar-header logo">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<h1><a href="/index.ashx">影碟出租网</a></h1>
+						</div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-right">
+								<li><a href="/index.ashx" class="link-kumya "><span data-letters="首页">首页</span></a></li>
+								<li><a href="/search.ashx" class="link-kumya"><span data-letters="搜索">搜索</span></a></li>
+								<li><a href="/recommend.ashx" class="link-kumya"><span data-letters="推荐">推荐</span></a></li>
+								<li><a href="/help.ashx" class="link-kumya"><span data-letters="帮助">帮助</span></a></li>
+								<li><a href="/user.ashx" class="link-kumya active"><span data-letters="用户中心">用户中心</span></a></li>
+								<li><a href="/contact.ashx" class="link-kumya"><span data-letters="联系">联系</span></a></li>
+							</ul>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<!--//navigation-->
+			<div class="banner-text">
+				<h2>我们将帮你找到你梦寐以求的影碟</h2>
+			</div>
+		</div>
+	</div>
+	<!--//banner-->
+	<!--Shortcodes-page -->
+	<div class="tabs">
+		<div class="container">
+			<div class="col-md-12 ">
+				<div class="col-md-3 tab-grid-left">
+					<!-- required for floating -->
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#Tab1" data-toggle="tab">已借的影碟</a></li>
+						<li><a href="#Tab2" data-toggle="tab">未归还的影碟</a></li>
+                        <li><a href="#Tab3" data-toggle="tab">您的影评</a></li>
+						<li><a href="/Logout.ashx">退出登录</a></li>
+					</ul>
+				</div>
+				<div class="col-md-9 tab-grid-right">
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div class="tab-pane active" id="Tab1">
+							<div class="text">
+								<h3 class="title">已借影碟列表</h3>
+								<div class="col-md-12">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+                                                <th>用户编号</th>
+												<th>影片名</th>
+                                                <th>租金(元)</th>                                                
+                                                <th>借出时间</th>
+                                                <th>应归还时间</th>
+                                                <th>归还时间</th>
+												<th>是否归还</th>
+											</tr>
+                                            </thead>
+										
+										<tbody>
+                                            #foreach($borrowinfo in $Data.borrowinfo)
+											<tr>
+												<td>$borrowinfo.clientid</td>
+												<td><a href="detail.ashx?videoid=$borrowinfo.videoid">$borrowinfo.videoname</a></td>
+                                                <td>$borrowinfo.rent</td>                                            
+                                                <td>$borrowinfo.borrowtime.Year年$borrowinfo.borrowtime.Month月$borrowinfo.borrowtime.Day日</td>
+                                                <td>$borrowinfo.shouldtime.Year年$borrowinfo.shouldtime.Month月$borrowinfo.shouldtime.Day日</td>                                       
+                                                #if($borrowinfo.isreturn==0)
+                                                <td>——</td> 
+                                                <td>否</td>
+                                                #else
+                                                <td>$borrowinfo.returntime.Year年$borrowinfo.returntime.Month月$borrowinfo.returntime.Day日</td> 
+                                                <td>是</td>
+                                                #end
+											</tr>
+                                            #end
+										</tbody>
+									</table>
+								</div>
+                                <ul class="pagination pagination-lg" style="margin-left: 40%;">
+                                    <li style="margin:0;"><a href="#">共$Data.TotalCount个/共$Data.PageCount页</a></li>
+
+                                    #if($Data.PageNumber>1)
+                                     #set($PrePageNumber = $Data.PageNumber - 1)
+					                <li style="margin:0;"><a href="$Data.prehref" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                    #end
+
+                                   #foreach($pd in $Data.PageData)
+                                    <li style="margin:0;"><a href="$pd.Href">$pd.Title</a></li>
+                                   #end
+
+                                   #if($Data.PageNumber<$Data.PageCount)
+                                     #set($ReaPageNumber=$Data.PageNumber + 1)
+					                <li  style="margin:0;"><a href="$Data.reahref" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                   #end
+				
+                                </ul>
+							</div>
+						</div>
+
+						<div class="tab-pane" id="Tab2">
+							<div class="text">
+								<h3 class="title">未归还影碟列表</h3>
+								<div class="col-md-12">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+                                                <th>用户编号</th>
+												<th>影片名</th>
+                                                <th>租金(元)</th>                                                
+                                                <th>借出时间</th>
+                                                <th>应归还时间</th>
+                                                <th>归还时间</th>
+												<th>是否归还</th>
+											</tr>
+										</thead>
+										<tbody>
+                                       
+                                            #foreach($noreturninfo in $Data.noreturninfo)
+											<tr>
+												<td>$noreturninfo.clientid</td>
+												<td><a href="detail.ashx?videoid=$noreturninfo.videoid">$noreturninfo.videoname</a></td>
+                                                <td>$noreturninfo.rent</td>                                            
+                                                <td>$noreturninfo.borrowtime.Year年$noreturninfo.borrowtime.Month月$noreturninfo.borrowtime.Day日</td>
+                                                <td>$noreturninfo.shouldtime.Year年$noreturninfo.shouldtime.Month月$noreturninfo.shouldtime.Day日</td>
+                                                #if($noreturninfo.isreturn==0)
+                                                  <td>——</td>
+                                                  <td>否</td>
+                                                #else
+                                                <td>$noreturninfo.returntime.Year年$noreturninfo.returntime.Month月$noreturninfo.returntime.Day日</td>
+                                                <td>是</td>
+                                                #end
+											</tr>
+                                            #end
+
+										</tbody>
+									</table>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="tab-pane" id="Tab3">
+							<div class="text">
+								<h3 class="title">个人评论列表</h3>
+                                <p>评论来源于您提交评论时输入的邮箱号</p>
+								<div>
+								<table class="table table-bordered">
+										<thead>
+											<tr>
+                                                <th>用户编号</th>
+												<th>评论的影片名</th>
+                                                <th>评论时间</th>                                                
+                                                <th style="width:350px;">评论内容</th>
+											</tr>
+										</thead>
+										<tbody>
+
+                                          #foreach($review in $Data.review)
+											<tr>
+                                                <td>$Data.clientid</td>
+                                                <td><a href="detail.ashx?videoid=$review.videoid">$review.videoname</a></td>
+                                                <td>$review.reviewtime</td>
+                                                <td>$review.message</td>
+                                            </tr>
+                                            #end
+
+										</tbody>
+									</table>
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--//short-codes-->
+	<!--footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-4 footer-grids">
+				<h3>评论</h3>
+				<p>这个网站很好用，用户体验很好，值得推广。希望您动动手指给同伴分享一下。</p>
+
+				<br />
+				<div class="bshare-custom icon-medium-plus">
+					<a title="分享到" href="http://www.bShare.cn/" id="bshare-shareto" class="bshare-more">分享到</a>
+					<a title="分享到QQ空间" class="bshare-qzone"></a>
+					<a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+					<a title="分享到人人网" class="bshare-renren"></a>
+					<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+				</div>
+				<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=3&amp;lang=zh"></script>
+				<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+			</div>
+			<div class="col-md-3 footer-grids">
+				<h3>联系我们</h3>
+				<p>地址：中国保定河北大学新校区五四东路2666号<br>
+					<span>电话：15930779698</span>
+					<span>邮箱：2273009930@qq.com</span>
+				</p>
+			</div>
+			<div class="col-md-5 footer-grids">
+				<h3>照片墙</h3>
+				<a class="footer-img" href="#"> <img src="/images/f1.jpg" alt=""/></a>
+				<a class="footer-img" href="#"> <img src="/images/f2.jpg" alt=""/></a>
+				<a class="footer-img" href="#"> <img src="/images/f3.jpg" alt=""/></a>
+			</div>
+			<div class="clearfix"> </div>
+			<div class="footer-copy">
+				<p>© 2018 影碟出租. 保留所有权利 | <a href="#">河北大学网络空间安全与计算机学院网工二班第一组成员</a>设计</p>
+			</div>
+		</div>
+	</div>
+	<!--//footer-->
+	<!-- script-for prettySticky -->
+	<script src="/js/prettySticky.js"></script>
+	<!--//script-for prettySticky -->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Web Store - FAQs</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <!-- templatemo 341 web store -->
+    <!-- 
+Web Store Template 
+http://www.templatemo.com/preview/templatemo_341_web_store 
+-->
+    <link href="../css/myfaqcss.css" rel="stylesheet" type="text/css" />
+    <link href="../css/templatemo_style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../css/ddsmoothmenu.css" />
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/ddsmoothmenu.js">
+
+/***********************************************
+* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+    </script>
+
+    <script type="text/javascript">
+
+        ddsmoothmenu.init({
+            mainmenuid: "templatemo_menu", //menu DIV id
+            orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+            classname: 'ddsmoothmenu', //class added to menu's outer DIV
+            //customtheme: ["#1c5a80", "#18374a"],
+            contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+        })
+
+        function clearText(field) {
+            if (field.defaultValue == field.value) field.value = '';
+            else if (field.value == '') field.value = field.defaultValue;
+        }
+    </script>
+
+</head>
+
+<body id="subpage">
+
+    <div id="templatemo_wrapper">
+        <div id="templatemo_header">
+            <div id="site_title">
+                <h1><a href="#">五金店</a></h1>
+            </div>
+
+            <div id="header_right">
+                <ul id="language">
+                    <li><a>
+                        <img src="..//images/usa.png" alt="English" /></a></li>
+                    <li><a>
+                        <img src="..//images/china.png" alt="Chinese" /></a></li>
+                    <li><a>
+                        <img src="..//images/germany.png" alt="Germany" /></a></li>
+                    <li><a>
+                        <img src="..//images/india.png" alt="Indian" /></a></li>
+                </ul>
+                <div class="cleaner"></div>
+                <div id="templatemo_search">
+                    <form action="#" method="get">
+                        <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                        <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn" />
+                    </form>
+                </div>
+            </div>
+            <!-- END -->
+        </div>
+        <!-- END of header -->
+
+        <div id="templatemo_menu" class="ddsmoothmenu">
+            <ul>
+                #foreach($menufirst in $Data.menufirsts)
+                #if($menufirst.menuname == "常见问题解答")
+                 <li><a href="$menufirst.href"  class="selected">$menufirst.menuname</a></li>
+                #else
+                <li><a href="$menufirst.href">$menufirst.menuname</a></li>
+                #end
+                #end  
+            </ul>
+            <br style="clear: left" />
+        </div>
+        <!-- end of templatemo_menu -->
+
+        <div class="cleaner h20"></div>
+        <div id="templatemo_main_top"></div>
+        <div id="templatemo_main">
+            <div id="sidebar">
+                <h3>产品分类</h3>
+                <ul class="sidebar_menu">
+                     #foreach($proclass in $Data.proclasses)
+                    <li><a href="/productclass.ashx?proclassid=$proclass.proclassid">$proclass.proclassname</a></li>
+                    #end
+                </ul>
+                <h3>新闻页</h3>
+                <p>Praesent aliquam mi id tellus pretium pulvinar in vel ligula.</p>
+                <div id="newsletter">
+                    <form action="#" method="get">
+                        <input type="text" value="Subscribe" name="email_newsletter" id="email_newsletter" title="email_newsletter" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                        <input type="submit" name="subscribe" value="订阅" alt="Subscribe" id="subscribebtn" title="Subscribe" class="subscribebtn" />
+                    </form>
+                    <div class="cleaner"></div>
+                </div>
+            </div>
+            <!-- END of sidebar -->
+
+            <div id="content" class="faq">
+                <h2>常见问题解答</h2>
+                <h3>我怎么知道你收到了我的订单？</h3>
+                <p>您将收到一封电子邮件，确认您的订单已收到。如果您没有收到电子邮件确认，请检查订单中的电子邮件地址是否正确输入。</p>
+
+                <h3>我的订单何时发货？</h3>
+                <p>请阅读我们的运送政策。点击<a href="#">这里</a></p>
+
+                <h3>你接受什么支付方式？</h3>
+                <p>PayPal、支付宝、微信支付</p>
+
+                <h3>如果我不喜欢我可以退货还是换货？</h3>
+                <p>请阅读我们的交易政策。点击<a href="#">这里</a></p>
+
+                <h3>如何知道在线订购是否安全？</h3>
+                <p>保护您的信息是Glory Silver的优先事项。我们使用安全套接字层（SSL）来加密您的信用卡号码，名称和地址，因此只有Glory Silver能够解码您的信息。SSL是计算机安全通信的行业标准方法，没有数据拦截，操纵或接收者模拟的风险。确保您的连接安全; 当您在购物车中时，请查看浏览器窗口的下角。如果您看到一个完整的密钥或闭锁，则SSL处于活动状态，并且您的信息是安全的。由于大多数客户在线提供信用卡仍然不舒服，因此我们使用PayPal和2CheckOut服务，因此不需要输出信用卡信息。</p>
+                <p>荣耀银牌与HackerGuardian一起登记。HackerGuardian认证的黑客免费网站和信用卡TrustLogo确认您的信誉在线信用卡详细信息。验证 <a href="http://validator.w3.org/check?uri=referer" rel="nofollow">XHTML</a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow">CSS</a>。</p>
+
+                <h3>您的隐私政策是什么？</h3>
+                <p>Glory Silver尊重您的隐私，并希望确保您了解完成订单所需的信息，以及您可以选择与我们和我们的营销合作伙伴分享的信息。有关我们隐私政策的完整信息，请访问我们的 <a href="#">隐私政策</a>  页面。</p>
+
+            </div>
+            <!-- END of content -->
+            <div class="cleaner"></div>
+        </div>
+        <!-- END of main -->
+
+        <div id="templatemo_footer">
+          #foreach($linkclassdata in $Data.linkclassData)
+            <div class="col col_16">
+                <h4>$linkclassdata.linkclassname</h4>                
+                <ul class="footer_menu">
+                    #foreach($link in $linkclassdata.links)
+                    <li><a href="$link.linkurl" target="_blank">$link.linkname</a></li>
+                    #end
+                </ul>
+            </div>
+            #end    
+
+            <div class="col col_13 no_margin_right">
+                <h4>关于我们</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper quam sit amet turpis rhoncus id venenatis tellus sollicitudin. Fusce ullamcorper, dolor non mollis pulvinar, turpis tortor commodo nisl. Validate <a href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.</p>
+            </div>
+
+            <div class="cleaner h40"></div>
+            <center>
+                Copyright © 2008-2018 MyCompany
+            </center>
+        </div>
+        <!-- END of footer -->
+
+    </div>
+
+</body>
+</html>

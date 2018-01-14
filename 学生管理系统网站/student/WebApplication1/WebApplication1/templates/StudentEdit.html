@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>学生编辑</title>
+    <script type="text/javascript" src="../script/check.js"></script>
+    <script type="text/javascript" src="../script/ajax.js"></script>
+    <script type="text/javascript" src="../script/json2.js"></script>
+   <script type="text/javascript" src="../script/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="../script/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript">
+        function checkStudent(th) {
+            var id = th.id;
+            if (id == "name") {
+                if (document.getElementById(id).value == "") {
+                    document.getElementById("nameMS").innerHTML = "姓名不能为空！";
+                    document.getElementById("store").disabled = "disabled";
+                }
+                else {
+                    if (checkName(th)) {
+                        document.getElementById("nameMS").innerHTML = "";
+                        document.getElementById("store").disabled = "";
+                    }
+                    else {
+                        document.getElementById("nameMS").innerHTML = "请输入符合规范的姓名！";
+                        document.getElementById("store").disabled = "disabled";
+                    }
+                }
+            }
+            else if (id == "birthday") {
+                if (checkBirthday(th)) {
+                    document.getElementById("birthdayMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("birthdayMS").innerHTML = "规范的生日格式：19950608";
+                }
+            }
+            else if (id == "height") {
+                if (checkHeight(th)) {
+                    document.getElementById("heightMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("heightMS").innerHTML = "请输入符合规范的身高";
+                }
+            }
+        }
+
+        /*   function load(th) {
+            var id = th.id;
+                if (id == "sex") {
+                var obj = document.getElementById(id);
+                //var index = obj.selectedIndex;          // selectedIndex代表的是你所选中项的index
+                //var myselect = obj.options[index].value;        //拿到选中项options的value：  
+                //obj.options[index].text;          //拿到选中项options的text： 
+                obj.options.length = 0;
+                obj.options.add(new Option("男", "男"));
+                obj.options.add(new Option(" 女", "女"));
+        }
+            else if (id == "specialties") {
+                var obj = document.getElementById(id);
+                obj.options.length = 0;
+                obj.options.add(new Option("是", "是"));
+                obj.options.add(new Option(" 否", "否"));
+            }
+            else if (id == "classname") {
+                ajax("../Query.ashx?action=" + "studentToClassname", function (resText) {
+                    var classes = JSON.parse(resText);
+                    var obj = document.getElementById(id);
+                    obj.options.length = 0;
+                    for (var i = 0; i < classes.length; i++) {
+                        var c = classes[i];
+                        obj.options.add(new Option(c.classname, c.cid));
+                    }
+                });
+            }
+        }
+*/
+        function sub() {
+            if (document.getElementById("name").value == "") {
+                alert("姓名不能为空！");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="../StudentEdit.ashx" method="post">
+        <input type="hidden" name="UpdateID" value="$Data.Student.sid" />
+        <table>
+            <tr>
+                <td>姓名：</td>
+                <td>
+                    <input type="text" name="name" id="name" onblur=" checkStudent(this)" value="$Data.Student.name" /></td>
+                <td><font color="red" id="nameMS"></font></td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td>
+                    <select name="sex" id="sex"   style="height: 25px; width: 50px;">
+                        <option value="$Data.Student.sex">$Data.Student.sex</option>
+                        <option value="$Data.sexOptions">$Data.sexOptions</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>生日：</td>
+                <td>
+                    <input type="text" name="birthday" id="birthday" onblur=" checkStudent(this)" value="$Data.Student.birthday" /></td>
+                <td><font color="red" id="birthdayMS"></font></td>
+            </tr>
+            <tr>
+                <td>身高：</td>
+                <td>
+                    <input type="text" name="height" id="height" onblur=" checkStudent(this)" value="$Data.Student.height" /></td>
+                <td>(cm)</td>
+                <td><font color="red" id="heightMS"></font></td>
+            </tr>
+            <tr>
+                <td>所属班级：</td>
+                <td>
+                    <select name="classname" id="classname"  style="height: 25px;">
+                        <option value="$Data.Student.cid">$Data.Student.classname</option>
+                        #foreach($classes in $Data.classnames)
+                    <option value="$classes.cid">$classes.classname</option>
+                        #end
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>是否特长生：</td>
+                <td>
+                    <select name="specialties" id="specialties"  style="height: 25px; width: 50px;">
+                        <option value="$Data.Student.specialties">$Data.Student.specialties</option>
+                        <option value="$Data.specialtiesOptions">$Data.specialtiesOptions</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" id="store" onclick="sub()" value="确认" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

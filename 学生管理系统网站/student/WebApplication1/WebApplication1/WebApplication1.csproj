@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B74C108E-D6F5-44D4-A1C9-BC542AC2EF4F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplication1</RootNamespace>
+    <AssemblyName>WebApplication1</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NVelocity">
+      <HintPath>F:\VS2012 工作目录\Web应用\WebApplication1\WebApplication1\NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\h_bg.jpg" />
+    <Content Include="images\nav_bg.png" />
+    <Content Include="images\search.jpg" />
+    <Content Include="images\search.png" />
+    <Content Include="script\ajax.js" />
+    <Content Include="Query.ashx" />
+    <Content Include="Page.ashx" />
+    <Content Include="Delete.ashx" />
+    <Content Include="createImg.ashx" />
+    <Content Include="CheckUser.ashx" />
+    <Content Include="Login.ashx" />
+    <Content Include="QuitSession.ashx" />
+    <None Include="script\jquery-1.7.1.intellisense.js" />
+    <Content Include="script\check.js" />
+    <Content Include="script\jquery-1.7.1.js" />
+    <Content Include="script\jquery-1.7.1.min.js" />
+    <Content Include="script\json2.js" />
+    <Content Include="styles\A.css" />
+    <Content Include="styles\login.css" />
+    <Content Include="templates\Login.html" />
+    <Content Include="templates\main.html" />
+    <Content Include="styles\Init.css" />
+    <Content Include="styles\Main.css" />
+    <Content Include="templates\Feedback.html" />
+    <Content Include="templates\StudentAdd.html" />
+    <Content Include="templates\StudentEdit.html" />
+    <Content Include="templates\StudentMain.html" />
+    <Content Include="templates\TeacherMain.html" />
+    <Content Include="templates\TeacherAdd.html" />
+    <Content Include="templates\TeacherEdit.html" />
+    <Content Include="templates\ClassAdd.html" />
+    <Content Include="templates\ClassEdit.html" />
+    <Content Include="templates\ClassMain.html" />
+    <Content Include="test\5秒跳转页面.html" />
+    <Content Include="test\cursor.html" />
+    <Content Include="test\delRow.html" />
+    <Content Include="test\htmlPage.html" />
+    <Content Include="test\htmlPage1.html" />
+    <Content Include="test\identifyCode.html" />
+    <Content Include="test\JQuery冲突.html" />
+    <Content Include="test\map.html" />
+    <Content Include="test\map1.html" />
+    <Content Include="test\map_静态图片.html" />
+    <Content Include="test\page.js" />
+    <Content Include="test\selectAdd.html" />
+    <Content Include="test\insertRow.html" />
+    <Content Include="test\mouse.html" />
+    <Content Include="test\selectAdd1.html" />
+    <Content Include="test\setTimeout.html" />
+    <Content Include="test\shanshuo.html" />
+    <Content Include="test\test.html" />
+    <Content Include="test\test1.html" />
+    <Content Include="test\test2.html" />
+    <Content Include="test\test3.html" />
+    <Content Include="test\z-index.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CheckUser.ashx.cs">
+      <DependentUpon>CheckUser.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassAdd.ashx.cs">
+      <DependentUpon>ClassAdd.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassEdit.ashx.cs">
+      <DependentUpon>ClassEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassMain.ashx.cs">
+      <DependentUpon>ClassMain.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="createImg.ashx.cs">
+      <DependentUpon>createImg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DataTableToJson.cs" />
+    <Compile Include="Delete.ashx.cs">
+      <DependentUpon>Delete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback.ashx.cs">
+      <DependentUpon>Feedback.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="main.ashx.cs">
+      <DependentUpon>main.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Page.ashx.cs">
+      <DependentUpon>Page.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query.ashx.cs">
+      <DependentUpon>Query.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="QuitSession.ashx.cs">
+      <DependentUpon>QuitSession.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SessionHelper2.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="StudentAdd.ashx.cs">
+      <DependentUpon>StudentAdd.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentEdit.ashx.cs">
+      <DependentUpon>StudentEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="StudentMain.ashx.cs">
+      <DependentUpon>StudentMain.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherAdd.ashx.cs">
+      <DependentUpon>TeacherAdd.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherEdit.ashx.cs">
+      <DependentUpon>TeacherEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherMain.ashx.cs">
+      <DependentUpon>TeacherMain.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="StudentMain.ashx" />
+    <Content Include="StudentEdit.ashx" />
+    <Content Include="StudentAdd.ashx" />
+    <Content Include="Feedback.ashx" />
+    <Content Include="TeacherMain.ashx" />
+    <Content Include="TeacherAdd.ashx" />
+    <Content Include="TeacherEdit.ashx" />
+    <Content Include="ClassAdd.ashx" />
+    <Content Include="ClassEdit.ashx" />
+    <Content Include="ClassMain.ashx" />
+    <Content Include="main.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>32646</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1119/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

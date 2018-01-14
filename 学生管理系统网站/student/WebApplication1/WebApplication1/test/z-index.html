@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>z-index练习</title>
+    <style type="text/css">
+        div {
+            border: dotted;
+        }
+    </style>
+</head>
+<body>
+    <div id="a0">A</div>
+    <div id="b0">B</div>
+
+    <div id="a1" style="position: static;">A</div>
+    <div id="b1">B</div>
+
+    <div id="a2" style="position: relative;">A</div>
+    <div id="b2">B</div>
+
+    <div id="a3">
+        <div id="b3" style="position: relative;">A-1</div>
+    </div>
+    <div id="c3">B</div>
+
+    <div id="a4" style="z-index: 2;">A</div>
+    <div id="b4" style="z-index: 1;">B</div>
+    <div id="c4" style="z-index: 0;">C</div>
+
+    <div id="a5" style="z-index: 2;">A</div>
+    <div id="b5" style="position: relative; z-index: 1;">B</div>
+    <div id="c5" style="position: relative; z-index: 0;">C</div>
+
+    <div id="a6" style="position: relative; z-index: 1;">A</div>
+    <div id="b6" style="position: relative; z-index: 0;">B</div>
+    <div id="c6" style="position: relative;">C</div>
+    <div id="d6" style="position: relative; z-index: 0;">D</div>
+
+    <div id="a7" style="position: relative; z-index: 1;">
+        <div id="a7-1">A-1</div>
+    </div>
+    <div id="b7" style="position: relative; z-index: 0;">
+        <div id="b7-1">B-1</div>
+    </div>
+
+    <div id="a8" style="position: relative; z-index: 0;">
+        <div id="a8-1" style="position: relative; z-index: 2;">A-1</div>
+    </div>
+    <div id="b8" style="position: relative; z-index: 0;">
+        <div id="b8-1" style="position: relative; z-index: 1;">B-1</div>
+    </div>
+
+    <div id="a9" style="position: relative; z-index: 0;">
+        <div id="a9-1" style="position: relative; z-index: 100;">A-1</div>
+    </div>
+    <div id="b9">
+        <div id="b9-1" style="position: relative; z-index: 0;">
+            <div id="b9-1-1" style="position: relative; z-index: 10;">B-1-1</div>
+        </div>
+    </div>
+    <div id="c9" style="position: relative; z-index: 0;">
+        <div id="c9-1">
+            <div id="c9-1-1">
+                <div id="c9-1-1-1" style="position: relative; z-index: 1;">C-1-1-1</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

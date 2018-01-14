@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>jquery测试页-111cn.NET</title>
+    <!-- 引入 jquery 1.8.0 -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+    <script type="text/JavaScript">
+        var $180 = $;
+    </script>
+
+    <!-- 引入 jquery 1.9.0 -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript">
+        var $190 = $;
+    </script>
+
+    <!-- 引入 jquery 2.0.0 -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+    <script type="text/javascript">
+        var $200 = $;
+    </script>
+
+    <script type="text/javascript">
+        alert($180.fn.jquery);
+        alert($190.fn.jquery);
+        alert($200.fn.jquery);
+
+        $180(function ($) { $('<p>我是' + $.fn.jquery + '版本添加进来的。</p>').appendTo('body'); });
+        $190(function ($) { $('<p>我是' + $.fn.jquery + '版本添加进来的。</p>').appendTo('body'); });
+        $200(function ($) { $('<p>我是' + $.fn.jquery + '版本添加进来的。</p>').appendTo('body'); });
+    </script>
+</head>
+<body>
+       在同一个页面中加载多个不同的jQuery版本<br/>
+</body>
+</html>

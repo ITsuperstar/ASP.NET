@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{90AC7C99-20DB-4DC9-9EEC-E08A5D39183B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MetalsWebApplication</RootNamespace>
+    <AssemblyName>MetalsWebApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NVelocity">
+      <HintPath>.\NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\amazeui.min.css" />
+    <Content Include="css\ddsmoothmenu.css" />
+    <Content Include="css\lightbox.css" />
+    <Content Include="css\login.css" />
+    <Content Include="css\myfaqcss.css" />
+    <Content Include="css\myindexcss.css" />
+    <Content Include="css\styles.css" />
+    <Content Include="css\templatemo_style.css" />
+    <Content Include="images\2co.gif" />
+    <Content Include="images\cart.png" />
+    <Content Include="images\china.png" />
+    <Content Include="images\closelabel.gif" />
+    <Content Include="images\gallery\01.jpg" />
+    <Content Include="images\gallery\02.jpg" />
+    <Content Include="images\gallery\03.jpg" />
+    <Content Include="images\gallery\04.jpg" />
+    <Content Include="images\gallery\05.jpg" />
+    <Content Include="images\gallery\06.jpg" />
+    <Content Include="images\gallery\07.jpg" />
+    <Content Include="images\germany.png" />
+    <Content Include="images\india.png" />
+    <Content Include="images\loading.gif" />
+    <Content Include="favicon.ico" />
+    <Content Include="images\login\bg.jpg" />
+    <Content Include="images\login\logo.svg" />
+    <Content Include="images\login\password.png" />
+    <Content Include="images\login\user.png" />
+    <Content Include="images\login\usererror.png" />
+    <Content Include="images\login\userinit.png" />
+    <Content Include="images\login\userright.png" />
+    <Content Include="images\login\yzm.svg" />
+    <Content Include="images\nextlabel.gif" />
+    <Content Include="images\paypal.gif" />
+    <Content Include="images\prevlabel.gif" />
+    <Content Include="images\product\01.jpg" />
+    <Content Include="images\product\02.jpg" />
+    <Content Include="images\product\03.jpg" />
+    <Content Include="images\product\04.jpg" />
+    <Content Include="images\product\05.jpg" />
+    <Content Include="images\product\06.jpg" />
+    <Content Include="images\product\07.jpg" />
+    <Content Include="images\product\08.jpg" />
+    <Content Include="images\product\09.jpg" />
+    <Content Include="images\product\10.jpg" />
+    <Content Include="images\product\10_l.jpg" />
+    <Content Include="images\product\product02\1.jpg" />
+    <Content Include="images\product\product02\10.jpg" />
+    <Content Include="images\product\product02\11.jpg" />
+    <Content Include="images\product\product02\12.jpg" />
+    <Content Include="images\product\product02\13.jpg" />
+    <Content Include="images\product\product02\14.jpg" />
+    <Content Include="images\product\product02\15.jpg" />
+    <Content Include="images\product\product02\16.jpg" />
+    <Content Include="images\product\product02\17.jpg" />
+    <Content Include="images\product\product02\18.jpg" />
+    <Content Include="images\product\product02\19.jpg" />
+    <Content Include="images\product\product02\2.jpg" />
+    <Content Include="images\product\product02\20.jpg" />
+    <Content Include="images\product\product02\21.jpg" />
+    <Content Include="images\product\product02\22.jpg" />
+    <Content Include="images\product\product02\23.jpg" />
+    <Content Include="images\product\product02\24.jpg" />
+    <Content Include="images\product\product02\25.jpg" />
+    <Content Include="images\product\product02\26.jpg" />
+    <Content Include="images\product\product02\27.jpg" />
+    <Content Include="images\product\product02\28.jpg" />
+    <Content Include="images\product\product02\29.jpg" />
+    <Content Include="images\product\product02\3.jpg" />
+    <Content Include="images\product\product02\30.jpg" />
+    <Content Include="images\product\product02\31.jpg" />
+    <Content Include="images\product\product02\32.jpg" />
+    <Content Include="images\product\product02\33.jpg" />
+    <Content Include="images\product\product02\34.jpg" />
+    <Content Include="images\product\product02\35.jpg" />
+    <Content Include="images\product\product02\36.jpg" />
+    <Content Include="images\product\product02\37.jpg" />
+    <Content Include="images\product\product02\38.jpg" />
+    <Content Include="images\product\product02\39.jpg" />
+    <Content Include="images\product\product02\4.jpg" />
+    <Content Include="images\product\product02\40.jpg" />
+    <Content Include="images\product\product02\41.jpg" />
+    <Content Include="images\product\product02\5.jpg" />
+    <Content Include="images\product\product02\6.jpg" />
+    <Content Include="images\product\product02\7.jpg" />
+    <Content Include="images\product\product02\8.jpg" />
+    <Content Include="images\product\product02\9.jpg" />
+    <Content Include="images\remove_x.gif" />
+    <Content Include="images\sidebar_header_bg.png" />
+    <Content Include="images\slideitmoo_back.png" />
+    <Content Include="images\slideitmoo_forward.png" />
+    <Content Include="images\templatemo_body_home.png" />
+    <Content Include="images\templatemo_body_subpage.png" />
+    <Content Include="images\templatemo_image_01.png" />
+    <Content Include="images\templatemo_image_02.png" />
+    <Content Include="images\templatemo_list.png" />
+    <Content Include="images\templatemo_list_01.png" />
+    <Content Include="images\templatemo_list_02.png" />
+    <Content Include="images\templatemo_logo.png" />
+    <Content Include="images\templatemo_main_bottom.png" />
+    <Content Include="images\templatemo_main_middle.png" />
+    <Content Include="images\templatemo_main_top.png" />
+    <Content Include="images\templatemo_menu_divider.png" />
+    <Content Include="images\templatemo_middle.png" />
+    <Content Include="images\templatemo_searchbox.png" />
+    <Content Include="images\templatemo_slider.png" />
+    <Content Include="images\templatemo_submenu.png" />
+    <Content Include="images\usa.png" />
+    <Content Include="images\zhifubao.jpg" />
+    <Content Include="js\ajax.js" />
+    <Content Include="js\builder.js" />
+    <Content Include="js\ddsmoothmenu.js" />
+    <Content Include="js\effects.js" />
+    <Content Include="js\jquery-1.10.2.js" />
+    <Content Include="js\jquery-1.4.3.min.js" />
+    <Content Include="createImg.ashx" />
+    <Content Include="CheckUser.ashx" />
+    <Content Include="isLogin.ashx" />
+    <Content Include="index.ashx" />
+    <Content Include="about.ashx" />
+    <Content Include="checkout.ashx" />
+    <Content Include="contact.ashx" />
+    <Content Include="faqs.ashx" />
+    <Content Include="contactSubmit.ashx" />
+    <None Include="js\jquery-1.7.1.intellisense.js" />
+    <Content Include="js\jquery-1.7.1.js" />
+    <Content Include="js\jquery-1.7.1.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\json2.js" />
+    <Content Include="js\lightbox.js" />
+    <Content Include="js\location\GlobalProvinces_extend.js" />
+    <Content Include="js\location\GlobalProvinces_main.js" />
+    <Content Include="js\location\initLocation.js" />
+    <Content Include="js\location\jquery.js" />
+    <Content Include="js\mootools-1.2-more.js" />
+    <Content Include="js\mootools-1.2.1-core.js" />
+    <Content Include="js\myjs\ajax1.js" />
+    <Content Include="js\myjs\check.js" />
+    <Content Include="js\prototype.js" />
+    <Content Include="js\scriptaculous.js" />
+    <Content Include="js\slideitmoo-1.1.js" />
+    <Content Include="templates\about.html" />
+    <Content Include="templates\checkout.html" />
+    <Content Include="templates\contact.html" />
+    <Content Include="templates\faqs.html" />
+    <Content Include="templates\index.html" />
+    <Content Include="templates\login.html" />
+    <Content Include="templates\productdetail.html" />
+    <Content Include="templates\products.html" />
+    <Content Include="templates\shared\myshoppingcar.html" />
+    <Content Include="templates\shoppingcart.html" />
+    <Content Include="templates\productclass.html" />
+    <Content Include="templates\zhifu.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="zhifu.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="about.ashx.cs">
+      <DependentUpon>about.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="checkout.ashx.cs">
+      <DependentUpon>checkout.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckUser.ashx.cs">
+      <DependentUpon>CheckUser.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="contact.ashx.cs">
+      <DependentUpon>contact.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="contactSubmit.ashx.cs">
+      <DependentUpon>contactSubmit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="createImg.ashx.cs">
+      <DependentUpon>createImg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="DataTableToJson.cs" />
+    <Compile Include="faqs.ashx.cs">
+      <DependentUpon>faqs.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="index.ashx.cs">
+      <DependentUpon>index.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="isLogin.ashx.cs">
+      <DependentUpon>isLogin.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.ashx.cs">
+      <DependentUpon>Logout.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="orderCancel.ashx.cs">
+      <DependentUpon>orderCancel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="orderCreat.ashx.cs">
+      <DependentUpon>orderCreat.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="orderdeliverCreat.ashx.cs">
+      <DependentUpon>orderdeliverCreat.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderIdHelper.cs" />
+    <Compile Include="orderSuccess.ashx.cs">
+      <DependentUpon>orderSuccess.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="productclass.ashx.cs">
+      <DependentUpon>productclass.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="productdetail.ashx.cs">
+      <DependentUpon>productdetail.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="products.ashx.cs">
+      <DependentUpon>products.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionHelper.cs" />
+    <Compile Include="shoppingcarAdd.ashx.cs">
+      <DependentUpon>shoppingcarAdd.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="shoppingcarCount.ashx.cs">
+      <DependentUpon>shoppingcarCount.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="shoppingcarDeal.ashx.cs">
+      <DependentUpon>shoppingcarDeal.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="shoppingcart.ashx.cs">
+      <DependentUpon>shoppingcart.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="zhifu.ashx.cs">
+      <DependentUpon>zhifu.ashx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Login.ashx" />
+    <Content Include="Logout.ashx" />
+    <Content Include="productdetail.ashx" />
+    <Content Include="products.ashx" />
+    <Content Include="shoppingcart.ashx" />
+    <Content Include="productclass.ashx" />
+    <Content Include="shoppingcarAdd.ashx" />
+    <Content Include="shoppingcarCount.ashx" />
+    <Content Include="shoppingcarDeal.ashx" />
+    <Content Include="orderCreat.ashx" />
+    <Content Include="orderCancel.ashx" />
+    <Content Include="orderdeliverCreat.ashx" />
+    <Content Include="orderSuccess.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2231/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

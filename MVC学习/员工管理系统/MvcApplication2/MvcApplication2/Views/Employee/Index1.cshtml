@@ -1,0 +1,32 @@
+﻿@{Layout = null;}
+@*@model  MvcApplication2.Models.Employee*@
+@using MvcApplication2.ViewModels
+@model  EmployeeListViewModel 
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <div style="text-align:right"> Hello, @Model.UserName
+        <a href="/Authentication/Logout">Logout</a></div>
+        @{ Html.RenderAction("GetAddNewLink"); }
+        <table>
+            <tr>
+                <th>Employee Name</th>
+                <th>Salary</th>
+            </tr>
+            @foreach (EmployeeViewModel item in Model.Employees)
+            {
+                <tr>
+                    <td>@item.EmployeeName</td>
+                    <td style="background-color:@item.SalaryColor">@item.Salary</td>
+                </tr>
+         }
+        </table>
+        @{Html.RenderPartial("Footer", Model.FooterData);}
+    </div>
+</body>
+</html>

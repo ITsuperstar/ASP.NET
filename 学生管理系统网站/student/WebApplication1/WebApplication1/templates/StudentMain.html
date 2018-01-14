@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>student</title>
+    <meta charset="utf-8" />
+    <link href="../styles/Main.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../script/ajax.js"></script>
+    <script type="text/javascript" src="../script/json2.js"></script>
+    <script type="text/javascript" src="../script/jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        function ModifyHref(th) {
+            var id = th.id;
+            document.getElementById(id).href = "../StudentMain.ashx?Search="+document.getElementById("SearchText").value;
+            //document.getElementById(id).setAttribute("href","www.xxx.com");
+        }
+        function paging(th) {
+            var page = th.id;
+            document.getElementById("currentPage").value = page;
+            ajax("../Page.ashx?action=student&PageNumber=" + page, function (resText) {
+                var persons = JSON.parse(resText);
+                var tab = document.getElementById("myTable");
+                var rowNum = tab.rows.length;
+                for (var j = (rowNum-1); j >= 2; j--)
+                {
+                    tab.deleteRow(j);
+                } 
+                for (var i = 0; i < persons.length; i++) {
+                    var p = persons[i];
+                    var x = document.getElementById("myTable").insertRow();
+                    x.insertCell(0).innerHTML = "<a href=" + "../StudentEdit.ashx?EditID=" + p.sid + ">" + p.name + "</a>";
+                    x.insertCell(1).innerHTML = p.sex;
+                    x.insertCell(2).innerHTML = p.birthday;
+                    x.insertCell(3).innerHTML = p.height;
+                    x.insertCell(4).innerHTML = p.classname;
+                    x.insertCell(5).innerHTML = p.specialties;
+                    x.insertCell(6).innerHTML =  "<a href=" + "javascript:void(0)" + " id=" + p.sid + " onclick="+"deleteCurrentRow(this)" + ">删除</a>";
+                }
+            });
+        }
+        function deleteCurrentRow(th)
+        {
+            if (confirm("确定要删除?"))
+            {
+                var page = document.getElementById("currentPage").value;
+                ajax("../Delete.ashx?action=student&PageNumber=" + page+"&DelID="+th.id, function (resText) {
+                    var persons = JSON.parse(resText);
+                    var tab = document.getElementById("myTable");
+                    var rowNum = tab.rows.length;
+                    for (var j = (rowNum - 1) ; j >= 2; j--) {
+                        tab.deleteRow(j);
+                    }
+                    for (var i = 0; i < persons.length; i++) {
+                        var p = persons[i];
+                        var x = document.getElementById("myTable").insertRow();
+                        x.insertCell(0).innerHTML = "<a href=" + "../StudentEdit.ashx?EditID=" + p.sid + ">" + p.name + "</a>";
+                        x.insertCell(1).innerHTML = p.sex;
+                        x.insertCell(2).innerHTML = p.birthday;
+                        x.insertCell(3).innerHTML = p.height;
+                        x.insertCell(4).innerHTML = p.classname; 
+                        x.insertCell(5).innerHTML = p.specialties;
+                        x.insertCell(6).innerHTML = "<a href=" + "javascript:void(0)" + " id=" + p.sid + " onclick=" + "deleteCurrentRow(this)" + ">删除</a>";
+                    }
+                });
+            }
+            else { }
+        }
+        function skiping(th)
+        {
+            var reg = /^\d{1,5}$/;
+            var skipPage = $("#skipPage").val();
+            if ($("#skipPage").val() == "")
+            { alert("请输入页码"); }
+            else {
+                if (reg.test(skipPage)==false)
+                { alert("请输入正确页码");}
+               else
+                {
+                    var page = skipPage;
+                    document.getElementById("currentPage").value = page;
+                    ajax("../Page.ashx?action=student&PageNumber=" + page, function (resText) {
+                        var persons = JSON.parse(resText);
+                        var tab = document.getElementById("myTable");
+                        var rowNum = tab.rows.length;
+                        for (var j = (rowNum - 1) ; j >= 2; j--) {
+                            tab.deleteRow(j);
+                        }
+                        for (var i = 0; i < persons.length; i++) {
+                            var p = persons[i];
+                            var x = document.getElementById("myTable").insertRow();
+                            x.insertCell(0).innerHTML = "<a href=" + "../StudentEdit.ashx?EditID=" + p.sid + ">" + p.name + "</a>";
+                            x.insertCell(1).innerHTML = p.sex;
+                            x.insertCell(2).innerHTML = p.birthday;
+                            x.insertCell(3).innerHTML = p.height;
+                            x.insertCell(4).innerHTML = p.classname;
+                            x.insertCell(5).innerHTML = p.specialties;
+                            x.insertCell(6).innerHTML = "<a href=" + "javascript:void(0)" + " id=" + p.sid + " onclick=" + "deleteCurrentRow(this)" + ">删除</a>";
+                        }
+                    });
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <p><font size="30" color="red">学生管理系统</font></p>
+        </div>
+
+        <div id="main">
+            <div id="first">
+                <div class="content1">
+                    <ul>
+                        <li><a href="../StudentMain.ashx">学生管理</a></li>
+                        <li><a href="../TeacherMain.ashx">老师管理</a></li>
+                        <li><a href="../ClassMain.ashx">班级管理</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="second">
+                <div class="content2">
+                    <table  cellspacing="5" id="myTable">
+                        <tr>
+                            <td><a href="../StudentAdd.ashx">新增</a></td>
+                            <td /> <td /> <td />
+                            <td colspan="2"><input type="text" name="Search" id="SearchText"/></td>
+                            <td><a href="../StudentMain.ashx" id="search" onclick="ModifyHref(this)" >查询</a></td>
+                        </tr>
+                        <tr>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>生日</th>
+                            <th >身高(cm)</th>
+                            <th >所属班级</th>
+                            <th >是否特长生</th>
+                            <th>删除</th>
+                        </tr>
+                        #foreach($p in $Data.Persons)
+                        <tr>
+                          <td><a href="../StudentEdit.ashx?EditID=$p.sid">$p.name</a></td>
+                          <td style="text-align: center;">$p.sex</td>
+                          <td style="text-align: center;">$p.birthday</td>
+                          <td style="text-align: center;">$p.height</td>
+                          <td style="text-align: center;">$p.classname</td>
+                          <td style="text-align: center;">$p.specialties</td>
+                          <td style="text-align: center;"><a href="javascript:void(0)" id="$p.sid" onclick="deleteCurrentRow(this)">删除</a></td>
+                           <!-- href="../StudentMain.ashx?DelID=$p.sid"-->
+                        </tr>
+                        #end
+                    </table>
+                </div>
+             <div id="thrid">
+                 共$Data.TotalCount个/共$Data.PageCount页
+                     <a  href="javascript:void(0)" onclick="paging(this)"  id="1"><<</a>
+
+                  #foreach($pd in $Data.PageData)
+                 <a href="javascript:void(0)" onclick="paging(this)"  id="$pd.ID">第$pd.Title页</a>
+                 #end
+
+                <a  href="javascript:void(0)" onclick="paging(this)"  id="$Data.PageCount">>></a>
+                 <input type="text" style="width:50px;"  name="skipPage" id="skipPage"/>
+                 <input type="button" name="skip" id="skip" value="跳转" onclick="skiping(this)"/>
+                  </div>
+            </div>
+        </div>
+
+        <div id="footer">
+            <a href="../Feedback.ashx">反馈</a>
+        </div>
+
+    </div>
+        <input type="hidden" name="currentPage"  id="currentPage" value="$Data.currentPage" />
+</body>
+</html>

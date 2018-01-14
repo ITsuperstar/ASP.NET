@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+
+<div class="fy" style="width:auto;">
+<script language="JavaScript" type="text/javascript">
+
+    var currentPage = 1
+    var prevPage = currentPage - 1
+    var nextPage = currentPage + 1
+    var countPage = 3
+
+    if (countPage > 1 && currentPage != 0 && currentPage != 1)
+        document.write("<a href=\"t20170404_9412197.htm\" target='_self'>首页</a>&nbsp;|&nbsp;<a href=\"t20170404_9412197" + "_" + prevPage + "." + "htm\" target='_self'>上一页</a>&nbsp;");
+    else if (countPage > 1 && currentPage != 0 && currentPage == 1)
+
+        document.write("<a href=\"t20170404_9412197.htm\" target='_self'>首页</a>&nbsp;|&nbsp;<a href=\"t20170404_9412197.htm\" target='_self'>上一页</a>&nbsp;");
+    else
+        document.write("首页&nbsp;|&nbsp;上一页&nbsp;");
+    var num = 5;
+    var temp = (num - 1) * parseInt(currentPage / ((num - 1)))
+
+
+    if (countPage <= num) {
+        for (var j = 0; j < countPage ; j++) {
+            if (currentPage == j)
+                document.write("<font color='red' class='page_current'>" + (j + 1) + "</font>&nbsp;");
+            else if (j == 0) {
+                document.write("<a target='_self' href=\"t20170404_9412197.htm\" class=\"page_sytle\">" + 1 + "</a>&nbsp;");
+            } else
+                document.write("<a target='_self' href=\"t20170404_9412197" + "_" + j + "." + "htm\" class=\"page_sytle\">" + (j + 1) + "</a>&nbsp;");
+        }
+    }
+    else {
+
+        if (currentPage % (num - 1) == 0) {
+            var start_num;
+            var end_num;
+
+            if (currentPage + num - 1 > countPage - 1) {
+
+                start_num = countPage - num;
+                end_num = countPage;
+            }
+            else {
+                start_num = currentPage;
+                end_num = num + temp
+            }
+
+            for (var i = start_num; i < end_num; i++) {
+                if (currentPage == i)
+                    document.write("<font color='red' class='page_current'>" + (i + 1) + "</font>&nbsp;");
+                else if (i == 0) {
+                    document.write("<a target='_self' href=\"t20170404_9412197.htm\" class=\"page_sytle\">" + 1 + "</a>&nbsp;");
+                } else
+                    document.write("<a target='_self' href=\"t20170404_9412197" + "_" + i + "." + "htm\" class=\"page_sytle\">" + (i + 1) + "</a>&nbsp;");
+            }
+
+        }
+        else {
+            if (temp + num > countPage) {
+                temp = countPage - num;
+            }
+            for (var i = temp ; i < num + temp; i++) {
+                if (currentPage == i)
+                    document.write("<font color='red' class='page_current'>" + (i + 1) + "</font>&nbsp;");
+                else if (i == 0) {
+                    document.write("<a target='_self' href=\"t20170404_9412197.htm\" class=\"page_sytle\">" + 1 + "</a>&nbsp;");
+                } else
+                    document.write("<a target='_self' href=\"t20170404_9412197" + "_" + i + "." + "htm\" class=\"page_sytle\">" + (i + 1) + "</a>&nbsp;");
+            }
+
+        }
+    }
+
+    if (countPage > 1 && currentPage != (countPage - 1))
+        document.write("<a target='_self' href=\"t20170404_9412197" + "_" + nextPage + "." + "htm\">下一页</a>&nbsp;|&nbsp;<a target='_self' href=\"t20170404_9412197_" + (countPage - 1) + ".htm\">尾页</a>&nbsp;");
+    else
+        document.write("下一页&nbsp;|&nbsp;尾页&nbsp;");
+</script>
+
+</div>
+</body>
+</html>

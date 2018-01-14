@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>意见反馈</title>
+</head>
+<body>
+    <form action="../Feedback.ashx" method="post">
+        <table>
+            <tr><td>联系方式：</td> 
+                <td><input type="text" name="contact" value="$Data.contact"/></td>
+                <td><font color="red">*</font></td>
+                <td><font color="red">$Data.message</font></td>
+            </tr>
+         </table>
+         <table>
+            <tr><td>意见反馈：</td></tr>
+            <tr>
+                <td>
+                    <textarea cols="30" rows="10" name="Feedback">$Data.text</textarea>
+                </td>
+            </tr>
+            <tr><td><input type="submit" value="提交"/></td></tr>
+         </table>
+    </form>
+</body>
+</html>

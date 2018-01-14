@@ -1,0 +1,122 @@
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: Microsoft Yahei;
+	background: url('../images/login/bg.jpg') no-repeat center;
+	background-size: 100% 100%;
+}
+
+.icon {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.top {
+	line-height: 60px;
+	background: rgba(44, 54, 70, 0.4);
+	padding: 10px 350px;
+	position: absolute;
+	width: 100%;
+}
+.top p {
+	color:white;
+    font-size: 45px;
+}
+.container {
+	margin: 0 auto;
+	width: 1200px;
+	height: 100%;
+	padding: 10px 50px;
+	position: relative;
+}
+
+/*.container .icon-logo {
+	background: url('../images/login/logo.svg') no-repeat center;
+	background-size: 100% 100%;
+}*/
+
+.container .login-wrapper {
+	width: 300px;
+	height: 350px;
+	position: absolute;
+	top: 50%;
+	right: 10%;
+	margin-top: -200px;
+    /*background: #343333;*/
+	background: rgba(44, 54, 70, 0.4);
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	padding: 30px 0;
+	text-align: center;
+}
+
+.container .login-wrapper p:first-of-type {
+	color: white;
+	font-size: 20px;
+}
+
+.container .login-wrapper .input-wrapper {
+	position: relative;
+}
+
+.container .login-wrapper .icon-user {
+	background: url('../images/login/user.png') no-repeat center;
+	background-size: 100% 100%;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	top: 50%;
+	margin-top: -9px;
+	left: 35px;
+}
+
+.container .login-wrapper .icon-password {
+	background: url('../images/login/password.png') no-repeat center;
+	background-size: 100% 100%;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	top: 50%;
+	margin-top: -9px;
+	left: 35px;
+}
+
+.container .login-wrapper .icon-image {
+	background: url('../images/login/yzm.svg') no-repeat center;
+	background-size: 100% 100%;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	top: 50%;
+	margin-top: -9px;
+	left: 35px;
+}
+
+.container .login-wrapper input {
+	width: 250px;
+	line-height: 32px;
+	height: 32px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 0;
+	font-size: 14px;
+	padding: 1px 3px;
+	padding-left: 35px;
+	margin: 15px 0;
+}
+
+.container .login-wrapper button {
+	color: white;
+	background: #F99B1C;
+	width: 250px;
+	line-height: 30px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border: 0;
+	margin-top: 60px;
+}

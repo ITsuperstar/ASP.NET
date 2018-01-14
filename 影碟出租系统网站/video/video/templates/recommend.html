@@ -1,0 +1,184 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>影碟出租系统 | 推荐</title>
+	<!--mobile apps-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Rental Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+	</script>
+	<!--mobile apps-->
+	<!--Custom Theme files -->
+	<link href="/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="/css/style.css" type="text/css" rel="stylesheet" media="all">
+	<link rel="stylesheet" href="/css/prettySticky.css" type="text/css">
+   <link rel="stylesheet" href="/css/lightbox.css" type="text/css">
+	<!-- //Custom Theme files -->
+	<!-- js -->
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<script src="/js/bootstrap.js"></script>
+	<!-- //js -->
+	<!-- start-smoth-scrolling-->
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+
+	</script>
+	<!--//end-smoth-scrolling-->
+</head>
+
+<body>
+	<!--banner-->
+	<div id="home" class="banner about-banner">
+		<div class="banner-info">
+			<!--navigation-->
+			<div class="top-nav">
+				<nav>
+					<div class="container">
+						<div class="navbar-header logo">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<h1><a href="/index.ashx">影碟出租网</a></h1>
+						</div>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-right">
+								<li><a href="/index.ashx" class="link-kumya "><span data-letters="首页">首页</span></a></li>
+								<li><a href="/search.ashx" class="link-kumya"><span data-letters="搜索">搜索</span></a></li>
+								<li><a href="/recommend.ashx" class="link-kumya active"><span data-letters="推荐">推荐</span></a></li>
+								<li><a href="/help.ashx" class="link-kumya"><span data-letters="帮助">帮助</span></a></li>
+								<li><a href="/user.ashx" class="link-kumya"><span data-letters="用户中心">用户中心</span></a></li>
+								<li><a href="/contact.ashx" class="link-kumya"><span data-letters="联系">联系</span></a></li>
+							</ul>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<!--//navigation-->
+			<div class="banner-text">
+				<h2>我们将帮你找到你梦寐以求的影碟</h2>
+			</div>
+		</div>
+	</div>
+	<!--//banner-->
+	<!--blog-->
+	<div class="blog">
+		<div class="container">
+			<h3 class="title">优秀影片 </h3>
+			<div class="blog-info">
+
+				#foreach($videoinfo in $Data.videoinfo)
+				<div class="col-md-2 blog-grids">
+					<div class="blog-img">
+						<a href="/detail.ashx?videoid=$videoinfo.videoid"> <img src="$videoinfo.imageurl" class="img-responsive zoom-img" alt="" style="width:100%;height:50%" title="$videoinfo.videoname"/></a>
+					</div>
+					<h4 title="$videoinfo.videoname" style="width:180px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;"><a href="/detail.ashx?videoid=$videoinfo.videoid">$videoinfo.videoname</a></h4>
+					<p>价格: $videoinfo.price 元/月</p>
+					<p>数量: $videoinfo.number</p>
+					<p style="font-size:85%;">上市日期: $videoinfo.buydate.Year年$videoinfo.buydate.Month月$videoinfo.buydate.Day日</p>
+					<p  title="$videoinfo.describe" style="font-size:85%;width:180px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">简介: $videoinfo.describe</p>
+              
+                    <div class="more more2">
+						<a href="/detail.ashx?videoid=$videoinfo.videoid" class="button-pipaluk button--inverted">影片详情</a>
+					</div>
+				</div>
+				#end
+
+				<div class="clearfix"> </div>
+
+				<!-- 推荐分页 -->
+                <ul class="pagination pagination-lg" style="margin-left: 40%;">
+                    <li style="margin:0;"><a href="#">共$Data.TotalCount个/共$Data.PageCount页</a></li>
+
+                    #if($Data.PageNumber>1)
+                   #set($PrePageNumber = $Data.PageNumber - 1)
+					<li style="margin:0;"><a href="$Data.prehref" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                     #end
+
+                    #foreach($pd in $Data.PageData)
+                    <li style="margin:0;"><a href="$pd.Href">$pd.Title</a></li>
+                    #end
+
+                    #if($Data.PageNumber<$Data.PageCount)
+                    #set($ReaPageNumber=$Data.PageNumber + 1)
+					<li  style="margin:0;"><a href="$Data.reahref" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                    #end
+				
+                </ul>
+                <script src="/js/lightbox-plus-jquery.min.js">
+
+                </script>
+
+			</div>
+		</div>
+	</div>
+	<!--//blog-->
+	<!--footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-4 footer-grids">
+				<h3>评论</h3>
+				<p>这个网站很好用，用户体验很好，值得推广。希望您动动手指给同伴分享一下。</p>
+
+                <br />
+                <div class="bshare-custom icon-medium-plus">
+                    <a title="分享到" href="http://www.bShare.cn/" id="bshare-shareto" class="bshare-more">分享到</a>
+                    <a title="分享到QQ空间" class="bshare-qzone"></a>
+                    <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+                    <a title="分享到人人网" class="bshare-renren"></a>
+                    <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+                </div>
+                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=3&amp;lang=zh"></script>
+                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+			</div>
+			<div class="col-md-3 footer-grids">
+				<h3>联系我们</h3>
+				<p>地址：中国保定河北大学新校区五四东路2666号<br>
+					 <span>电话：15930779698</span>
+                    <span>邮箱：2273009930@qq.com</span>  
+				</p>
+			</div>
+			<div class="col-md-5 footer-grids">
+				<h3>照片墙</h3>
+				<a class="footer-img" href="#"> <img src="/images/f1.jpg" alt=""/></a>
+				<a class="footer-img" href="#"> <img src="/images/f2.jpg" alt=""/></a>
+				<a class="footer-img" href="#"> <img src="/images/f3.jpg" alt=""/></a>
+			</div>
+			<div class="clearfix"> </div>
+			<div class="footer-copy">
+				<p>© 2018 影碟出租. 保留所有权利 | <a href="#">河北大学网络空间安全与计算机学院网工二班第一组成员</a>设计</p>
+			</div>
+		</div>
+	</div>
+	<!--//footer-->
+	<!-- script-for prettySticky -->
+	<script src="/js/prettySticky.js"></script>
+	<!--//script-for prettySticky -->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

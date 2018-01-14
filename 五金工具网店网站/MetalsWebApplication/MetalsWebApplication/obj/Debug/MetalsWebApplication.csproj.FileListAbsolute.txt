@@ -1,0 +1,12 @@
+F:\VS2012 工作目录\Web应用\自做项目\MetalsWebApplication\MetalsWebApplication\bin\MetalsWebApplication.dll
+F:\VS2012 工作目录\Web应用\自做项目\MetalsWebApplication\MetalsWebApplication\bin\MetalsWebApplication.pdb
+F:\VS2012 工作目录\Web应用\自做项目\MetalsWebApplication\MetalsWebApplication\bin\NVelocity.dll
+F:\VS2012 工作目录\Web应用\自做项目\MetalsWebApplication\MetalsWebApplication\obj\Debug\MetalsWebApplication.dll
+F:\VS2012 工作目录\Web应用\自做项目\MetalsWebApplication\MetalsWebApplication\obj\Debug\MetalsWebApplication.pdb
+F:\VS2012 工作目录\Web应用\自做项目\MetalsWebApplication\MetalsWebApplication\obj\Debug\MetalsWebApplication.csprojResolveAssemblyReference.cache
+F:\VS2012 工作目录\Web应用\自做项目\修改后MetalsWebApplication\MetalsWebApplication\bin\MetalsWebApplication.dll
+F:\VS2012 工作目录\Web应用\自做项目\修改后MetalsWebApplication\MetalsWebApplication\bin\MetalsWebApplication.pdb
+F:\VS2012 工作目录\Web应用\自做项目\修改后MetalsWebApplication\MetalsWebApplication\bin\NVelocity.dll
+F:\VS2012 工作目录\Web应用\自做项目\修改后MetalsWebApplication\MetalsWebApplication\obj\Debug\MetalsWebApplication.csprojResolveAssemblyReference.cache
+F:\VS2012 工作目录\Web应用\自做项目\修改后MetalsWebApplication\MetalsWebApplication\obj\Debug\MetalsWebApplication.dll
+F:\VS2012 工作目录\Web应用\自做项目\修改后MetalsWebApplication\MetalsWebApplication\obj\Debug\MetalsWebApplication.pdb

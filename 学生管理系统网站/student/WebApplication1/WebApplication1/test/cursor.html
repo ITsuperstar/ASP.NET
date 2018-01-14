@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>光标事件</title>
+    <script>
+        function myFunction(x) {
+            x.style.background = "yellow";
+        }
+        function myFunction1(x) {
+            x.style.background = "white";
+        }
+    </script>
+</head>
+<body>请输入英文字符：
+    <input type="text" onfocus="myFunction(this)"  onblur="myFunction1(this)" />
+    <p>当输入字段获得焦点时，会触发改变背景颜色的函数。</p>
+</body>
+</html>

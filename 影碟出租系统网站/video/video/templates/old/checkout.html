@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Web Store - Checkout</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <!-- templatemo 341 web store -->
+    <!-- 
+Web Store Template 
+http://www.templatemo.com/preview/templatemo_341_web_store 
+-->
+    <link href="../css/templatemo_style.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="../css/ddsmoothmenu.css" />
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/ddsmoothmenu.js">
+
+/***********************************************
+* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+    </script>
+
+    <script type="text/javascript">
+
+        ddsmoothmenu.init({
+            mainmenuid: "templatemo_menu", //menu DIV id
+            orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+            classname: 'ddsmoothmenu', //class added to menu's outer DIV
+            //customtheme: ["#1c5a80", "#18374a"],
+            contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+        })
+
+        function clearText(field) {
+            if (field.defaultValue == field.value) field.value = '';
+            else if (field.value == '') field.value = field.defaultValue;
+        }
+    </script>
+
+    <script type="text/javascript" src="../js/myjs/check.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="../js/ajax.js"></script>
+    <script type="text/javascript">
+
+        //封装的一个open方法，防止弹出的窗口被浏览器阻止
+        function openwin(url) {
+            var a = document.createElement("a");
+            a.setAttribute("href", url);
+            a.setAttribute("target", "_blank");
+            //a.setAttribute("id", "camnpr");
+            document.body.appendChild(a);
+            a.click();
+        }
+
+        function check(th)
+        {
+            var id = th.id;
+            if (id == "name")
+            {
+                if (checkName(th)) {
+                    document.getElementById("nameMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("nameMS").innerHTML = "错误！";
+                }
+            }
+            else if (id == "email") {
+                if (checkEmail(th)) {       
+                    document.getElementById("emailMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("emailMS").innerHTML = "错误！";
+                }
+            }
+            else if (id == "telphone") {
+                if (checkTelphone(th)) {
+                    document.getElementById("telphoneMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("telphoneMS").innerHTML = "错误！";
+                }
+            }
+        }
+
+        function zhifu(th) {
+            // $th 代表传递过来的JQuery对象
+            if ($("#ordernum").html() == "订单号：无") {
+                alert("您现在没有订单，不能支付");
+                event.preventDefault();   //此处阻止事件
+            }
+            else {
+                var name = document.getElementById("name").value;
+                var email = document.getElementById("email").value;
+                var detailAddress = document.getElementById("detailAddress").value;
+                var telphone = document.getElementById("telphone").value;
+                var result = "";
+                if (name == "") {
+                    result = result + "姓名不能为空；";
+                }
+                if (email == "") {
+                    result = result + "邮箱不能为空；";
+                }
+                if (detailAddress == "") {
+                    result = result + "详细地址不能为空；";
+                }
+                if (telphone == "") {
+                    result = result + "电话不能为空；";
+                }
+                if (result != "") {
+                    alert(result);
+                    event.preventDefault();   //此处阻止事件
+                }
+                else if (result == "") {
+                    if ($("input[type='checkbox']:checked").length == 0) {
+                        alert("请您勾选接受使用条款");
+                        $("input[type='checkbox']").attr("checked", "checked");
+                        event.preventDefault();   //此处阻止提交表单  
+                    }
+                    else {
+                        //记录订单配送信息，传递支付参数
+                        var sheng = document.getElementById("sheng").value;
+                        var shi = document.getElementById("shi").value;
+                        var xian = document.getElementById("xian").value;
+                        var xiang = document.getElementById("xiang").value;
+                        var address = sheng + "省" + shi + "市" + xian + "县" + xiang + "  " + detailAddress;
+                        var orderdeliver = "?name=" + name + "&email=" + email + "&address=" + address + "&telphone=" + telphone;
+                        ajax("/orderdeliverCreat.ashx" + orderdeliver, function (resText) {
+                            if (resText == "nologin") {
+                                if (confirm("亲，请您先登录")) {
+                                    openwin("/Login.ashx");
+                                }
+                                else { }
+                            }
+                            else if (resText == "failure") {
+                                alert("添加配送地址失败，请稍候再试");
+                            }
+                            else if (resText == "success") {
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
+        function cancel(th) {
+            ajax("/orderCancel.ashx", function (resText) {
+                if (resText == "nologin") {
+                    if (confirm("亲，请您先登录")) {
+                        openwin("/Login.ashx");
+                    }
+                    else { }
+                }
+                else if (resText == "failure") {
+                    alert("订单取消失败，请稍后尝试取消");
+                }
+                else if (resText == "success") {
+                    alert("订单取消成功");
+                    openwin("/index.ashx");
+                }
+        });
+        }
+        </script>
+
+      <script type="text/javascript" src="../js/jquery.js"></script>
+      <script type="text/javascript" src="../js/location/GlobalProvinces_main.js"></script>
+      <script type="text/javascript" src="../js/location/GlobalProvinces_extend.js"></script>
+      <script type="text/javascript" src="../js/location/initLocation.js"></script>
+      <script type="text/javascript">
+          $(function () { initLocation({ sheng_val: "河北", shi_val: "保定", xian_val: "<?php echo $v['country']?>", xiang_val: "<?php echo $v['street']?>" }); })
+
+       </script>
+
+</head>
+
+<body id="subpage">
+
+    <div id="templatemo_wrapper">
+        <div id="templatemo_header">
+            <div id="site_title">
+                <h1><a href="#">五金店</a></h1>
+            </div>
+
+            <div id="header_right">
+                <ul id="language">
+                    <li><a>
+                        <img src="..//images/usa.png" alt="English" /></a></li>
+                    <li><a>
+                        <img src="..//images/china.png" alt="Chinese" /></a></li>
+                    <li><a>
+                        <img src="..//images/germany.png" alt="Germany" /></a></li>
+                    <li><a>
+                        <img src="..//images/india.png" alt="Indian" /></a></li>
+                </ul>
+                <div class="cleaner"></div>
+                <div id="templatemo_search">
+                    <form action="#" method="get">
+                        <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                        <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn" />
+                    </form>
+                </div>
+            </div>
+            <!-- END -->
+        </div>
+        <!-- END of header -->
+
+        <div id="templatemo_menu" class="ddsmoothmenu">
+            <ul>
+                #foreach($menufirst in $Data.menufirsts)
+                #if($menufirst.menuname == "结账")
+                 <li><a href="$menufirst.href"  class="selected">$menufirst.menuname</a></li>
+                #else
+                <li><a href="$menufirst.href">$menufirst.menuname</a></li>
+                #end
+                #end  
+            </ul>
+            <br style="clear: left" />
+        </div>
+        <!-- end of templatemo_menu -->
+        <div class="cleaner h20"></div>
+        <div id="templatemo_main_top"></div>
+        <div id="templatemo_main">
+
+            <div id="sidebar">
+                <h3>产品分类</h3>
+                <ul class="sidebar_menu">
+                     #foreach($proclass in $Data.proclasses)
+                    <li><a href="/productclass.ashx?proclassid=$proclass.proclassid">$proclass.proclassname</a></li>
+                    #end
+                </ul>
+                <h3>新闻页</h3>
+                <p>Praesent aliquam mi id tellus pretium pulvinar in vel ligula.</p>
+                <div id="newsletter">
+                    <form action="#" method="get">
+                        <input type="text" value="Subscribe" name="email_newsletter" id="email_newsletter" title="email_newsletter" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                        <input type="submit" name="subscribe" value="订阅" alt="Subscribe" id="subscribebtn" title="Subscribe" class="subscribebtn" />
+                    </form>
+                    <div class="cleaner"></div>
+                </div>
+            </div>
+            <!-- END of sidebar -->
+
+            <div id="content">
+                <h2>结账</h2>
+                <h5><strong>结算明细</strong></h5>
+                <div class="col col_13 checkout" style="width:600px">
+                    姓名:  <br />              			
+                    <input type="text" style="width: 200px;" name="name" id="name" onblur="check(this)"/>
+                    <span id="nameMS" style="color:#f00;font-size:15px;"></span> <br />
+                    地址:  <br />
+                    <span style="width: 600px;">
+                    <select id="sheng" name="province" style="height:25px;">  </select> 省
+	                <select id="shi" name="city" style="height:25px;">  </select> 市
+	                <select id="xian" name="country" style="height:25px;">  </select> 县
+	                <select id="xiang" name="street"  style="height:25px;">  </select> 镇或街道
+                    </span>
+                    <br />
+                    <input type="text" name="detailAddress" id="detailAddress" style="width: 400px;margin-top:5px;" placeholder="详细地址"/><br />
+
+                   邮箱: <br />
+                <input type="text" style="width: 200px;" name="email" id="email" onblur="check(this)"/>
+                    <span id="emailMS" style="color:#f00;font-size:15px;"></span> <br />
+                    电话: <br />
+                <input type="text" style="width: 200px;" name="telphone" id="telphone" onblur="check(this)"/>
+                    <span id="telphoneMS" style="color:#f00;font-size:15px;"></span> <br />
+                </div>
+
+<!--                <div class="col col_13 checkout">
+                   邮箱：
+				<input type="text" style="width: 300px;" />
+                    电话<br />
+                    <span style="font-size: 10px">Please, specify your reachable phone number. YOU MAY BE GIVEN A CALL TO VERIFY AND COMPLETE THE ORDER.</span>
+                    <input type="text" style="width: 300px;" />
+                </div>-->
+
+                <div class="cleaner h50"></div>
+                <h3  id="ordernum">订单号：$Data.ordernum</h3>
+                <h4>总计: <strong>￥$Data.totalprice</strong></h4>
+                <p>
+                    <input type="checkbox" />我已经接受<a href="#">使用条款</a>。
+                </p>
+                <table style="border: 1px solid #CCCCCC;" width="100%">
+                    <tr>
+                        <td height="80px">
+                            <img src="..//images/zhifubao.jpg"  alt="paypal" /></td>
+                        <td width="400px;" style="padding: 0px 20px;">推荐您使用支付宝帐户支付。使用支付宝支付更安全，并且交货时间最快。</td>
+                        <td><a href="/zhifu.ashx?action=zhifubao" class="more" onclick="zhifu(this)">支付宝</a></td>
+                    </tr>
+                    <tr>
+                        <td height="80px">
+                            <img src="..//images/paypal.gif" alt="paypal" />
+                        </td>
+                        <td width="400px;" style="padding: 0px 20px;">如果您有PayPal帐户。您可以选择PayPal帐户支付。
+                        </td>
+                        <td><a href="/zhifu.ashx?action=paypal" class="more"  onclick="zhifu(this)">PAYPAL</a></td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="cleaner"><p  style="text-align:right;"><a  href="#" onclick="cancel(this)" class="more" >取消订单</a></p></div>
+        </div>
+        <!-- END of main -->
+
+        <div id="templatemo_footer">
+          #foreach($linkclassdata in $Data.linkclassData)
+            <div class="col col_16">
+                <h4>$linkclassdata.linkclassname</h4>                
+                <ul class="footer_menu">
+                    #foreach($link in $linkclassdata.links)
+                    <li><a href="$link.linkurl" target="_blank">$link.linkname</a></li>
+                    #end
+                </ul>
+            </div>
+            #end    
+
+            <div class="col col_13 no_margin_right">
+                <h4>关于我们</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper quam sit amet turpis rhoncus id venenatis tellus sollicitudin. Fusce ullamcorper, dolor non mollis pulvinar, turpis tortor commodo nisl. Validate <a href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.</p>
+            </div>
+
+            <div class="cleaner h40"></div>
+            <center>
+                Copyright © 2008-2018 MyCompany
+                <!-- Credit: www.templatemo.com -->
+            </center>
+        </div>
+        <!-- END of footer -->
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>老师新增</title>
+    <script type="text/javascript" src="../script/check.js"></script>
+    <script type="text/javascript">
+        function checkTeacher(th) {
+            var id = th.id;
+            if (id == "tname") {
+                if (document.getElementById(id).value == "") {
+                    document.getElementById("tnameMS").innerHTML = "教师姓名不能为空！";
+                    document.getElementById("store").disabled = "disabled";
+                }
+                else {
+                    if (checkName(th)) {
+                        document.getElementById("tnameMS").innerHTML = "";
+                        document.getElementById("store").disabled = "";
+                    }
+                    else {
+                        document.getElementById("tnameMS").innerHTML = "请输入符合规范的教师姓名！";
+                        document.getElementById("store").disabled = "disabled";
+                    }
+                }
+            }
+            else if (id == "telphone") {
+                if (checkTelphone(th)) {
+                    document.getElementById("telphoneMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("telphoneMS").innerHTML = "请输入符合规范的电话号码！";
+                }
+            }
+            else if (id == "email") {
+                if (checkEmail(th)) {
+                    document.getElementById("emailMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("emailMS").innerHTML = "请输入符合规范的邮箱！";
+                }
+            }
+            else if (id == "birthday") {
+                if (checkBirthday(th)) {
+                    document.getElementById("birthdayMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("birthdayMS").innerHTML = "请输入符合规范的生日！";
+                }
+            }
+        }
+
+        function sub() {
+            if (document.getElementById("tname").value == "") {
+                alert("教师姓名不能为空！");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="../TeacherAdd.ashx" method="post">
+        <table>
+            <tr> <td>姓名：</td> <td><input type="text" name="tname" id="tname" onblur="checkTeacher(this)" value="$Data.tname"/></td>
+                 <td><font color="red" id="tnameMS"></font></td></tr>
+            <tr> <td>电话：</td> <td><input type="text" name="telphone" id="telphone" onblur="checkTeacher(this)" value="$Data.telphone"/></td>
+                  <td><font color="red" id="telphoneMS"></font></td> </tr>
+            <tr> <td>邮箱：</td> <td><input type="text" name="email"  id="email" onblur="checkTeacher(this)" value="$Data.email"/></td>
+                <td><font color="red" id="emailMS"></font></td></tr>
+            <tr> <td>生日：</td> <td><input type="text" name="birthday" id="birthday" onblur="checkTeacher(this)" value="$Data.birthday"/></td> 
+                <td><font color="red" id="birthdayMS"></font></td></tr>
+            <tr> <td><input type="submit" id="store"  onclick="sub()" value="保存" /></td> </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿@using MvcApplication2.ViewModels
+@model BaseViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@RenderSection("TitleSection")</title>
+    @RenderSection("HeaderSection", false)
+</head>
+<body>
+    <div style="text-align: right">
+        Hello, @Model.UserName
+        <a href="/Authentication/Logout">Logout</a>
+    </div>
+    <hr />
+    <div>
+        @RenderSection("ContentBody")
+    </div>
+    @Html.Partial("Footer", Model.FooterData)
+</body>
+</html>

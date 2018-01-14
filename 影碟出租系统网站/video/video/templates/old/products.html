@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Web Store - Products</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <!-- templatemo 341 web store -->
+    <!-- 
+Web Store Template 
+http://www.templatemo.com/preview/templatemo_341_web_store 
+-->
+     <link rel="stylesheet" type="text/css" href="../css/myindexcss.css" />
+    <link href="../css/templatemo_style.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="../css/ddsmoothmenu.css" />
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/ddsmoothmenu.js">
+
+/***********************************************
+* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+    </script>
+
+    <script type="text/javascript">
+
+        ddsmoothmenu.init({
+            mainmenuid: "templatemo_menu", //menu DIV id
+            orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+            classname: 'ddsmoothmenu', //class added to menu's outer DIV
+            //customtheme: ["#1c5a80", "#18374a"],
+            contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+        })
+
+        function clearText(field) {
+            if (field.defaultValue == field.value) field.value = '';
+            else if (field.value == '') field.value = field.defaultValue;
+        }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <script language="javascript" type="text/javascript" src="../js/mootools-1.2.1-core.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/mootools-1.2-more.js"></script>
+    <script language="javascript" type="text/javascript" src="../js/slideitmoo-1.1.js"></script>
+    <script language="javascript" type="text/javascript">
+        window.addEvents({
+            'domready': function () {
+                /* thumbnails example , div containers */
+                new SlideItMoo({
+                    overallContainer: 'SlideItMoo_outer',
+                    elementScrolled: 'SlideItMoo_inner',
+                    thumbsContainer: 'SlideItMoo_items',
+                    itemsVisible: 5,
+                    elemsSlide: 2,
+                    duration: 200,
+                    itemsSelector: '.SlideItMoo_element',
+                    itemWidth: 171,
+                    showControls: 1
+                });
+            },
+
+        });
+    </script>
+
+  <script type="text/javascript" src="/js/ajax.js"></script>
+    <script type="text/javascript" src="/js/json2.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            ajax("/isLogin.ashx", function (resText) {
+                if (resText == "no") { }
+                else {
+                    //获取购物车中初始的数量
+                    ajax("/shoppingcarCount.ashx", function (resText) {
+                        if (resText == "error") { }
+                        else {
+                            document.getElementById("shopingCount").innerHTML = resText;
+                        }
+                    });
+                }
+            });
+        }
+
+        //封装的一个open方法，防止弹出的窗口被浏览器阻止
+        function openwin(url) {
+            var a = document.createElement("a");
+            a.setAttribute("href", url);
+            a.setAttribute("target", "_blank");
+            //a.setAttribute("id", "camnpr");
+            document.body.appendChild(a);
+            a.click();
+        }
+        //实现 添加购物车成功 的提示信息停留5秒
+        var t = 1;
+        function messaging() {
+            document.getElementById("shoppingmessage").innerHTML = "添加成功";
+            var inter = setTimeout("messaging()", 3000)
+            if (t <= 0) {
+                clearTimeout(inter);
+                t = 1;
+                document.getElementById("shoppingmessage").innerHTML = "";
+                return;
+            }
+            t--;
+        }
+
+        function addtoshopcar(th) {
+            ajax("/isLogin.ashx", function (resText) {
+                if (resText == "no") {
+                    if (confirm("亲，请您先登录")) {
+                        openwin("/Login.ashx");
+                    }
+                    else { }
+                }
+                else {
+                    var proid = th;
+                    ajax("/shoppingcarAdd.ashx?proid=" + proid, function (resText) {
+                        if (resText == "add") {
+                            var count = document.getElementById("shopingCount").innerHTML;
+                            count = parseInt(count) + 1;
+                            messaging();
+                            document.getElementById("shopingCount").innerHTML = count;
+                        }
+                        else if (resText == "exist") {
+                            messaging();
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+
+</head>
+
+<body id="subpage">
+
+    <div id="templatemo_wrapper">
+        <div id="templatemo_header">
+            <div id="site_title">
+                <h1><a href="/index.ashx">五金店</a></h1>
+            </div>
+
+            <div id="header_right">
+                <ul id="language">
+                    <li><a>
+                        <img src="..//images/usa.png" alt="English" /></a></li>
+                    <li><a>
+                        <img src="..//images/china.png" alt="Chinese" /></a></li>
+                    <li><a>
+                        <img src="..//images/germany.png" alt="Germany" /></a></li>
+                    <li><a>
+                        <img src="..//images/india.png" alt="Indian" /></a></li>
+                </ul>
+                <div class="cleaner"></div>
+                <div id="templatemo_search">
+                    <form action="#" method="get">
+                        <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                        <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn" />
+                    </form>
+                </div>
+            </div>
+            <!-- END -->
+        </div>
+        <!-- END of header -->
+
+        <div id="templatemo_menu" class="ddsmoothmenu">
+            <ul>
+                #foreach($menufirst in $Data.menufirsts)
+                #if($menufirst.menuname == "产品")
+                 <li><a href="$menufirst.href"  class="selected">$menufirst.menuname</a></li>
+                #else
+                <li><a href="$menufirst.href">$menufirst.menuname</a></li>
+                #end
+                #end              
+            </ul>
+            <br style="clear: left" />
+        </div>
+        <!-- end of templatemo_menu -->
+
+        <div class="cleaner h20"></div>
+        <div id="templatemo_main_top"></div>
+        <div id="templatemo_main">
+            <div id="product_slider">
+                <div id="SlideItMoo_outer">
+                    <div id="SlideItMoo_inner">
+                        <div id="SlideItMoo_items">
+
+                            #foreach($prorecom in $Data.prorecoms)
+                            <div class="SlideItMoo_element">
+                                <a href="/productdetail.ashx?proid=$prorecom.proid" target="_blank">
+                                    <img src="$prorecom.proimageurl" alt="$prorecom.proid" /></a>
+                            </div>       
+                            #end   
+
+                        </div>
+                    </div>
+                </div>
+                <div class="cleaner"></div>
+            </div>
+
+            <div id="sidebar">
+                <h3>产品分类</h3>
+                <ul class="sidebar_menu">
+                     #foreach($proclass in $Data.proclasses)
+                    <li><a href="/productclass.ashx?proclassid=$proclass.proclassid">$proclass.proclassname</a></li>
+                    #end
+                </ul>
+                <h3>新闻页</h3>
+                <p>Praesent aliquam mi id tellus pretium pulvinar in vel ligula.</p>
+                <div id="newsletter">
+                    <form action="#" method="get">
+                        <input type="text" value="Subscribe" name="email_newsletter" id="email_newsletter" title="email_newsletter" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                        <input type="submit" name="subscribe" value="订阅" alt="Subscribe" id="subscribebtn" title="Subscribe" class="subscribebtn" />
+                    </form>
+                    <div class="cleaner"></div>
+                </div>
+            </div>
+            <!-- END of sidebar -->
+
+            <div id="content">
+                #foreach($proclassdata in $Data.proclassdata)
+                <h2>$proclassdata.proclassname</h2>
+                #set($n = 1)
+                #foreach($pro in $proclassdata.pros)
+                #if($n < 3)
+                <div class="col col_14 product_gallery">
+                    <a href="/productdetail.ashx?proid=$pro.proid" target="_blank">
+                    <img src="$pro.proimageurl" alt="$pro.proid" /></a>
+                    <h3>$pro.proname</h3>
+                    <p class="product_price">￥ $pro.proprice</p>
+                    <a href="javascript:void(0)" onclick="addtoshopcar($pro.proid)" class="add_to_cart">添加到购物车</a>
+                </div>
+                 #set($n = $n +1)
+                #else
+                               <div class="col col_14 product_gallery no_margin_right">
+                    <a href="/productdetail.ashx?proid=$pro.proid" target="_blank">
+                        <img src="$pro.proimageurl" alt="$pro.proid" /></a>
+                    <h3>$pro.proname</h3>
+                    <p class="product_price">￥ $pro.proprice</p>
+                    <a href="javascript:void(0)" onclick="addtoshopcar($pro.proid)" class="add_to_cart">添加到购物车</a>
+                </div>
+                #set($n = 1)
+                #end
+                #end
+                <a href="/productclass.ashx?proclassid=$proclassdata.proclassid" class="more float_r">View all</a>
+                <div class="cleaner h50"></div>
+                #end
+
+                <div class="cleaner"></div>
+
+            </div>
+            <!-- END of content -->
+            <div class="cleaner"></div>
+        </div>
+        <!-- END of main -->
+
+        <div id="templatemo_footer">
+          #foreach($linkclassdata in $Data.linkclassData)
+            <div class="col col_16">
+                <h4>$linkclassdata.linkclassname</h4>                
+                <ul class="footer_menu">
+                    #foreach($link in $linkclassdata.links)
+                    <li><a href="$link.linkurl" target="_blank">$link.linkname</a></li>
+                    #end
+                </ul>
+            </div>
+            #end          
+    
+            <div class="col col_13 no_margin_right">
+                <h4>关于我们</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper quam sit amet turpis rhoncus id venenatis tellus sollicitudin. Fusce ullamcorper, dolor non mollis pulvinar, turpis tortor commodo nisl. Validate <a href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.</p>
+            </div>
+
+            <div class="cleaner h40"></div>
+            <center>
+                Copyright © 2008-2018 MyCompany
+            </center>
+        </div>
+        <!-- END of footer -->
+
+    </div>
+
+     <!-- 购物车 -->
+    <div class="tip">
+    <div style="text-align: center;">
+        <span id="shoppingmessage" style="color: #ff0000; font-size: 12px;"></span>
+        <br />
+        <a href="/shoppingcart.ashx">
+            <img src="//images/myshopcar.png" alt="myshopcar" /></a><br />
+        <span style="font-size: 15px;">
+            购<br />
+            物<br />
+            车<br />
+        </span>
+        <a style="font-size: 18px; color: #ff0000;" href="/shoppingcart.ashx" id="shopingCount">0</a>
+    </div>
+    </div>
+
+</body>
+</html>

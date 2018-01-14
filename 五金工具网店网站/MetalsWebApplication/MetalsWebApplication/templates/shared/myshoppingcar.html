@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        /*侧边信息栏*/
+        .tip {
+            position: fixed;
+            top: 100px;
+            right: 0px;
+            background-color: #fff;
+            min-height: 20%;
+            z-index: 1000;
+            width: auto;
+        }
+    </style>
+    <script type="text/javascript" src="/js/ajax.js"></script>
+    <script type="text/javascript" src="/js/json2.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            //获取购物车中初始的数量
+            ajax("/shoppingcarCount.ashx", function (resText) {
+                if (resText == "error") { }
+                else {
+                    document.getElementById("shopingCount").innerHTML = resText;
+                }
+            });
+        }
+
+        //封装的一个open方法，防止弹出的窗口被浏览器阻止
+        function openwin(url) {
+            var a = document.createElement("a");
+            a.setAttribute("href", url);
+            a.setAttribute("target", "_blank");
+            //a.setAttribute("id", "camnpr");
+            document.body.appendChild(a);
+            a.click();
+        }
+        //实现 添加购物车成功 的提示信息停留5秒
+        var t = 1;
+        function messaging() {
+            document.getElementById("shoppingmessage").innerHTML = "添加成功";
+            var inter = setTimeout("messaging()", 3000)
+            if (t <= 0) {
+                clearTimeout(inter);
+                t = 1;
+                document.getElementById("shoppingmessage").innerHTML = "";
+                return;
+            }
+            t--;
+        }
+
+        function addtoshopcar(th) {
+            ajax("/isLogin.ashx", function (resText) {
+                if (resText == "no") {
+                    if (confirm("亲，请您先登录")) {
+                        openwin("/Login.ashx");
+                    }
+                    else { }
+                }
+                else {
+                    var proid = th;
+                    ajax("/shoppingcarAdd.ashx?proid=" + proid, function (resText) {
+                        if (resText == "add") {
+                            var count = document.getElementById("shopingCount").innerHTML;
+                            count = parseInt(count) + 1;
+                            messaging();
+                            document.getElementById("shopingCount").innerHTML = count;
+                        }
+                        else if (resText == "exist") {
+                            messaging();
+                        }
+                    });
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- 购物车 -->
+    <div class="tip">
+    <div style="text-align: center;">
+        <span id="shoppingmessage" style="color: #ff0000; font-size: 12px;"></span>
+        <br />
+        <a href="/shoppingcart.ashx">
+            <img src="/images/myshopcar.png" alt="myshopcar" /></a><br />
+        <span style="font-size: 15px;">
+            购<br />
+            物<br />
+            车<br />
+        </span>
+        <a style="font-size: 18px; color: #ff0000;" href="/shoppingcart.ashx" id="shopingCount">0</a>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>鼠标移动事件</title>
+    <script type="text/javascript">
+        function mouseOver() {
+            document.getElementById('div1').style.border = "1px solid red";
+        }
+        function mouseOut() {
+            document.getElementById('div1').style.border = "1px solid white";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1" style="width: 300px; border: 1px solid white;" onmouseover="mouseOver()" onmouseout="mouseOut()">
+        <p style="line-height: 2em; text-align: center;">我是一些文字或者图片</p>
+    </div>
+    <h1 onmouseover="style.color='red'" onmouseout="style.color='blue'">
+    请把鼠标移到这段文本上
+    </h1>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>JavaScript向select下拉框中添加和删除元素</title>
+    <script type="text/javascript" src="../script/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    /**
+     * 向select下拉框中添加子元素
+     */
+    function addElement() {
+        //var $my = JQuery.noConflict();     //此处$my就代表JQuery
+        //保证不重复添加
+        $("#select_div").empty();
+        //添加子元素
+        $("#select_div").append("<option value='0'>---请选择---</option><option value='1'>男</option><option value='2'>女</option>");
+    }
+    /**
+    * 删除下拉框中最后一个元素
+    */
+    function removeLast() {
+        //删除最后一个子元素
+        $("#select_div option:last").remove();
+    }
+</script>
+</head>
+<body>
+  <div id="select_span">
+     <select id="select_div" style="width:145px;">
+     </select>
+  </div>
+  <input type="button" value="添加元素" onclick="addElement()"/>
+  <input type="button" value="删除元素" onclick="removeLast()"/>
+</body>
+</html>

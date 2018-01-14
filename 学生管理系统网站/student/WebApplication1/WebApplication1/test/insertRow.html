@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>JS在表格中动态添加一行</title>
+    <script>
+        function insRow() {
+            var x = document.getElementById('myTable').insertRow(0);
+            var y = x.insertCell(0);
+            var z = x.insertCell(1);
+            y.innerHTML = "NEW CELL1";
+            z.innerHTML = "NEW CELL2";
+        }
+</script>
+</head>
+<body>
+<table id="myTable" border="1">
+<tr>
+<td>Row1 cell1</td>
+<td>Row1 cell2</td>
+</tr>
+<tr>
+<td>Row2 cell1</td>
+<td>Row2 cell2</td>
+</tr>
+<tr>
+<td>Row3 cell1</td>
+<td>Row3 cell2</td>
+</tr>
+</table>
+<br/>
+<input type="button" onclick="insRow()" value="Insert row"/>
+ <input type="button" onclick="{document.getElementById('myTable').deleteRow(0);}" value="del row"/>
+</body>
+</html>

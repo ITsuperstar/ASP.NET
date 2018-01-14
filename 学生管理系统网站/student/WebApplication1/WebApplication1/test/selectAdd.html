@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Select动态添加Option</title>
+    <script type="text/javascript">
+    function add() {
+        var testSelect = document.getElementById("testSelect");
+        //alert(testSelect.options.length);
+        //方式1
+        var op = document.createElement("option");
+        op.appendChild(document.createTextNode("方式一"));
+        //方式2
+        testSelect.appendChild(op);
+        testSelect.options[testSelect.options.length] = new Option("方式二", "方式二");
+        //方式3
+        var op1 = new Option("方式三", "方式三", true, true);
+        testSelect.options.add(op1);
+    }
+	</script>
+</head>
+<body>
+				<select name="testSelect" id="testSelect">
+          	<option label="test1" value="test1" >123</option>
+         </select>
+         <input type="button" value="add" onclick="add()"/>
+</body>
+</html>

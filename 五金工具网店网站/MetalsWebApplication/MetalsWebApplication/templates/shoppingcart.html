@@ -1,0 +1,438 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Web Store - Shopping Cart</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <!-- templatemo 341 web store -->
+    <!-- 
+Web Store Template 
+http://www.templatemo.com/preview/templatemo_341_web_store 
+-->
+     <link rel="stylesheet" type="text/css" href="../css/myindexcss.css" />
+    <link href="../css/templatemo_style.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="../css/ddsmoothmenu.css" />
+
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/ddsmoothmenu.js">
+
+/***********************************************
+* Smooth Navigational Menu- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+    </script>
+
+    <script type="text/javascript">
+
+        ddsmoothmenu.init({
+            mainmenuid: "templatemo_menu", //menu DIV id
+            orientation: 'h', //Horizontal or vertical menu: Set to "h" or "v"
+            classname: 'ddsmoothmenu', //class added to menu's outer DIV
+            //customtheme: ["#1c5a80", "#18374a"],
+            contentsource: "markup" //"markup" or ["container_id", "path_to_menu_file"]
+        })
+
+    </script>
+
+    <script language="javascript" type="text/javascript">
+        function clearText(field) {
+            if (field.defaultValue == field.value) field.value = '';
+            else if (field.value == '') field.value = field.defaultValue;
+        }
+    </script>
+
+    <script type="text/javascript" src="../js/ajax.js"></script>
+    <script type="text/javascript" src="../js/myjs/ajax1.js"></script>
+    <script type="text/javascript" src="../js/json2.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.10.2.js"></script>
+    <script type="text/javascript"> var $110 = $;</script>
+    <script type="text/javascript">    
+        function  eachProductTotal() {
+            //var sum1 = parseFloat(a) + parseFloat(b) + parseFloat(c);    //转换成float型
+            //var sum2 = (parseFloat(a) + parseFloat(b) + parseFloat(c)).toFixed(4);   //结果小数点后取4位
+            $("input[type='checkbox']:not(:first)").each(function () {
+                var price = $(this).parent().parent().children("td:eq(4)").html();
+                var quantity=$(this).parent().parent().children("td:eq(3)").children("input[type='text']").prop("value");
+                var total = (parseFloat(price) * parseInt(quantity)).toFixed(2);
+                $(this).parent().parent().children("td:eq(5)").html(total);
+            });
+        }
+
+        function oneProductTotal(th) {
+            var $id = $("#" + th);
+            var price = $id.children("td:eq(4)").html();
+            var quantity = $id.children("td:eq(3)").children("input[type='text']").prop("value");
+            var total = (parseFloat(price) * parseInt(quantity)).toFixed(2);
+            $id.children("td:eq(5)").html(total);
+        }
+
+        function selectProductTotal() {
+            var sum=0;
+            $("input[type='checkbox']:not(:first):checked").each(function () {            
+                var price = $(this).parent().parent().children("td:eq(4)").html();
+                var quantity = $(this).parent().parent().children("td:eq(3)").children("input[type='text']").prop("value");
+                sum = (parseFloat(price) * parseInt(quantity)) + parseFloat(sum);             
+            });
+            $("#selectproducttotal").html("￥"+parseFloat(sum).toFixed(2));
+        }
+
+        window.onload = function ()
+        {
+            eachProductTotal();
+        }
+        function selectAll(th)
+        {
+            //$(th)才表示传递过来的当前DOM对象，而不是$(this) ！！
+            if ($(th).prop("checked") == true) {
+                //除去第一个复选框外，复选框的全选
+                $("input[type='checkbox']:not(:first)").each(function () {
+                    $(this).prop("checked", true);
+                });
+                selectProductTotal();
+            }
+            else {
+                //除去第一个复选框外，复选框的全部取消
+                $("input[type='checkbox']:not(:first)").each(function () {
+                    $(this).prop("checked", false);
+                });
+                selectProductTotal();
+            }
+        }
+        
+        //封装的一个open方法，防止弹出的窗口被浏览器阻止
+        function openwin(url) {
+            var a = document.createElement("a");
+            a.setAttribute("href", url);
+            a.setAttribute("target", "_blank");
+            //a.setAttribute("id", "camnpr");
+            document.body.appendChild(a);
+            a.click();
+        }
+
+        // 用prop()方法替代attr()方法！！！
+        function subOne(th) {
+            //$(th)才表示传递过来的当前对象，而不是$(this) ！！
+            var carid = $(th).parent().parent().prop("id");
+            ajax("/shoppingcarDeal.ashx?action=subOne&carid=" + carid, function (resText) {
+                if (resText == "nologin") {
+                    if (confirm("亲，请您先登录")) {
+                        openwin("/Login.ashx");
+                    }
+                    else { }
+                }
+                else if (resText == "none") {
+                    $(th).parent().parent().remove();
+                    selectProductTotal();
+                }
+                else{
+                    $("#" + carid + " input[type='text']").prop("value", resText);
+                    oneProductTotal(carid);
+                    selectProductTotal();
+                }
+            });
+        }
+
+        function addOne(th) {
+            var carid = $(th).parent().parent().prop("id");
+            ajax("/shoppingcarDeal.ashx?action=addOne&carid=" + carid, function (resText) {
+                if (resText == "nologin") {
+                    if (confirm("亲，请您先登录")) {
+                        openwin("/Login.ashx");
+                    }
+                    else { }
+                }
+                else if (resText == "success") {
+                    var count = $("#" + carid + " input[type='text']").prop("value");
+                    count = parseInt(count) + 1;
+                    $("#" + carid + " input[type='text']").prop("value", count);
+                    oneProductTotal(carid);
+                    selectProductTotal();
+                }                
+            });
+        }
+
+        //var timer = null;
+        function quantity(th) {
+            //timer=setTimeout(function(){
+            var carid = $(th).parent().parent().prop("id");
+            var inputQuantity = $(th).prop("value");
+            var reg = /^[1-9]\d{0,4}$/;
+                if (reg.test(inputQuantity)) {
+                        ajax("/shoppingcarDeal.ashx?action=quantity&carid=" + carid + "&inputQuantity=" + inputQuantity, function (resText) {
+                            if (resText == "nologin") {
+                                if (confirm("亲，请您先登录")) {
+                                    openwin("/Login.ashx");
+                                }
+                                else { }
+                            }
+                            else if (resText == "success") {
+                                oneProductTotal(carid);
+                                selectProductTotal();
+                            }
+                            else if (resText == "delete") {
+                                $(th).parent().parent().remove();
+                                selectProductTotal();
+                            }
+                        });
+                    }               
+                else {
+                    alert("亲，请输入符合规范的数字");
+                    ajax("/shoppingcarDeal.ashx?action=quantity&carid=" + carid, function (resText) {
+                        if (resText == "nologin") {
+                            if (confirm("亲，请您先登录")) {
+                                openwin("/Login.ashx");
+                            }
+                            else { }
+                        }
+                        else {
+                            $(th).prop("value", resText);
+                            oneProductTotal(carid);
+                            selectProductTotal();
+                        }
+                    });
+                }
+                //}, 200);     //延迟200ms执行
+            }
+
+        function remove(th) {
+            var carid = $(th).parent().parent().prop("id");
+            //if (confirm("亲，您确定要删除？")) { }
+            ajax("/shoppingcarDeal.ashx?action=remove&carid=" + carid, function (resText) {
+                if (resText == "nologin") {
+                    if (confirm("亲，请您先登录")) {
+                        openwin("/Login.ashx");
+                    }
+                    else { }
+                }
+                else {
+                    $(th).parent().parent().remove();
+                    selectProductTotal();
+                }
+            });
+        }
+
+        function account(th) {
+            var checkedcount = $("input[type='checkbox']:not(:first):checked").length;
+            if(parseInt(checkedcount)==0)
+            {
+                alert("亲，请选择需要购买的商品，然后在结账");
+                event.preventDefault();     
+            }
+            else if(parseInt(checkedcount) > 6){
+                alert("亲，一个订单不能超过6个商品");
+                event.preventDefault();     
+            }
+            else {
+                var n = 1;
+                var url = "/orderCreat.ashx?checkedcount=" + checkedcount;
+                //除去第一个复选框外，选中的复选框
+                $("input[type='checkbox']:not(:first):checked").each(function () {
+                    var carid = $(this).parent().parent().prop("id");
+                    url = url + "&" + ("carid" + n) + "=" + carid;
+                    n = parseInt(n) + 1; 
+                });
+                //改写后的 ajax方法
+                ajax1(url, function (resText) {
+                    if (resText == "nologin") {
+                        if (confirm("亲，请您先登录")) {
+                            openwin("/Login.ashx");
+                        }
+                        else { }
+                    }
+                    else if (resText == "haveorder") {
+                        alert("亲，您还有未支付的订单，请您先支付上一次订单");
+                        //openwin("/checkout.ashx");   //不需要打开新得支付页面，因为a链接的地址就是支付页面
+                    }
+                    else {
+                        //alert("success");
+                    }
+                });
+
+                }
+        }
+
+
+    </script>
+
+
+</head>
+
+<body id="subpage">
+
+    <div id="templatemo_wrapper">
+        <div id="templatemo_header">
+            <div id="site_title">
+                <h1><a href="#">五金店</a></h1>
+            </div>
+
+            <div id="header_right">
+                <ul id="language">
+                    <li><a>
+                        <img src="../images/usa.png" alt="English" /></a></li>
+                    <li><a>
+                        <img src="../images/china.png" alt="Chinese" /></a></li>
+                    <li><a>
+                        <img src="../images/germany.png" alt="Germany" /></a></li>
+                    <li><a>
+                        <img src="../images/india.png" alt="Indian" /></a></li>
+                </ul>
+                <div class="cleaner"></div>
+                <div id="templatemo_search">
+                    <form action="#" method="get">
+                        <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                        <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn" />
+                    </form>
+                </div>
+            </div>
+            <!-- END -->
+        </div>
+        <!-- END of header -->
+
+        <div id="templatemo_menu" class="ddsmoothmenu">
+            <ul>
+                #foreach($menufirst in $Data.menufirsts)
+                #if($menufirst.menuname == "产品")
+                 <li><a href="$menufirst.href"  class="selected">$menufirst.menuname</a></li>
+                #else
+                <li><a href="$menufirst.href">$menufirst.menuname</a></li>
+                #end
+                #end  
+            </ul>
+            <br style="clear: left" />
+        </div>
+        <!-- end of templatemo_menu -->
+
+        <div class="cleaner h20"></div>
+        <div id="templatemo_main_top"></div>
+        <div id="templatemo_main">
+
+            <div id="sidebar">
+                <h3>产品分类</h3>
+                <ul class="sidebar_menu">
+                     #foreach($proclass in $Data.proclasses)
+                    <li><a href="/productclass.ashx?proclassid=$proclass.proclassid">$proclass.proclassname</a></li>
+                    #end
+                </ul>
+                <h3>新闻页</h3>
+                <p>Praesent aliquam mi id tellus pretium pulvinar in vel ligula.</p>
+                <div id="newsletter">
+                    <form action="#" method="get">
+                        <input type="text" value="Subscribe" name="email_newsletter" id="email_newsletter" title="email_newsletter" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                        <input type="submit" name="subscribe" value="订阅" alt="Subscribe" id="subscribebtn" title="Subscribe" class="subscribebtn" />
+                    </form>
+                    <div class="cleaner"></div>
+                </div>
+            </div>
+            <!-- END of sidebar -->
+
+            <div id="content">
+
+                <table width="700px" cellspacing="0" cellpadding="5">
+                    <tr bgcolor="#CCCCCC">
+                        <th class="h30"><input type="checkbox"  onclick="selectAll(this)" style="font-size:10px; height: 18px;"/></th>
+                        <th width="220" align="center" class="h30">图片 </th>
+                        <th width="180" align="center" class="h30">描述 </th>
+                        <th width="100" align="center" class="h30">数量 </th>
+                        <th width="60" align="center" class="h30">单价￥</th>
+                        <th width="60" align="center" class="h30">总价￥</th>
+                        <th width="90" class="h30">删除</th>
+                    </tr>
+
+                    #foreach($pro in $Data.pros)
+                    <tr id="$pro.carid">
+                        <td><input type="checkbox" onclick="selectProductTotal()"/></td>
+                        <td>
+                            <a href="/productdetail.ashx?proid=$pro.proid" target="_blank">
+                            <img src="$pro.proimageurl" alt="$pro.proid" /></a>
+                        </td>
+                        <td>Etiam in tellus</td>
+                        <td align="center">
+                            <input type="button"  value="-"  onclick="subOne(this)"/>
+                            <input type="text" value="$pro.quantity" style="width: 20px; text-align: center" onblur="quantity(this)"/>
+                            <input type="button" value="+" onclick="addOne(this)"/>
+                        </td>
+                        <td align="center">$pro.proprice </td>
+                        <td align="center"> </td>
+                        <td align="center"><a href="javascript:void(0)" onclick="remove(this)">
+                            <img src="../images/remove_x.gif" alt="remove" /><br />
+                            删除</a> </td>
+                    </tr>
+                    #end
+
+                    <tr>
+                        <td colspan="3" align="right" height="40px">您修改您的购物车？请点击此处<a href="/shoppingcart.ashx"><strong>更新</strong></a>&nbsp;&nbsp;</td>
+                        <td align="right" style="background: #ccc; font-weight: bold">总价 </td>
+                        <td align="right" style="background: #ccc; font-weight: bold" id="selectproducttotal">￥0 </td>
+                        <td style="background: #ccc; font-weight: bold"></td>
+                    </tr>
+                </table>
+
+             <div class="pagecode" style="width:auto; text-align:center;">
+              共$Data.TotalCount个/共$Data.PageCount页
+              <a href="/shoppingcart.ashx?PageNumber=1" ><<</a>
+              #if($Data.PageNumber>1)
+              #set($PrePageNumber = $Data.PageNumber - 1)
+              <a href="/shoppingcart.ashx?PageNumber=$PrePageNumber"><</a>
+               #end
+
+             #foreach($pd in $Data.PageData)
+             #if($pd.Title==$Data.PageNumber)
+             <a href="$pd.Href"  style="font-weight:bold;font-size:15px;color:#0094ff;border:ridge;">$pd.Title</a>
+             #else
+            <a href="$pd.Href">$pd.Title</a>
+            #end
+           #end
+
+           #if($Data.PageNumber<$Data.PageCount)
+           #set($ReaPageNumber=$Data.PageNumber + 1)
+           <a href="/shoppingcart.ashx?PageNumber=$ReaPageNumber">></a>
+           #end
+          <a href="/shoppingcart.ashx?PageNumber=$Data.PageCount">>></a>
+          </div>  <!-- END of pagecode -->
+
+                <div style="float: right; width: 215px; margin-top: 20px;">
+
+                    <div class="checkout"><a href="/checkout.ashx" class="more" onclick="account(this)">前往结账</a></div>
+                    <div class="cleaner h20"></div>
+                    <div class="continueshopping"><a href="javascript:history.back()" class="more">继续购物</a></div>
+
+                </div>
+
+            </div>
+            <div class="cleaner"></div>
+        </div>
+        <!-- END of main -->
+
+        <div id="templatemo_footer">
+             #foreach($linkclassdata in $Data.linkclassData)
+            <div class="col col_16">
+                <h4>$linkclassdata.linkclassname</h4>                
+                <ul class="footer_menu">
+                    #foreach($link in $linkclassdata.links)
+                    <li><a href="$link.linkurl" target="_blank">$link.linkname</a></li>
+                    #end
+                </ul>
+            </div>
+            #end     
+
+            <div class="col col_13 no_margin_right">
+                <h4>关于我们</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur semper quam sit amet turpis rhoncus id venenatis tellus sollicitudin. Fusce ullamcorper, dolor non mollis pulvinar, turpis tortor commodo nisl. Validate <a href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.</p>
+            </div>
+
+            <div class="cleaner h40"></div>
+            <center>
+                Copyright © 2008-2018 MyCompany
+                <!-- Credit: www.templatemo.com -->
+            </center>
+        </div>
+        <!-- END of footer -->
+
+    </div>
+
+</body>
+</html>

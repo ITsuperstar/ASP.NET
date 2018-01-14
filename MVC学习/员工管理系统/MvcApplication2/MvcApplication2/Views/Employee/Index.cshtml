@@ -1,0 +1,29 @@
+﻿@{ Layout = "~/Views/Shared/MyLayout.cshtml";}
+@*@model  MvcApplication2.Models.Employee*@
+@using MvcApplication2.ViewModels
+@model  EmployeeListViewModel
+
+@section TitleSection{
+MyView
+     }
+
+@section ContentBody{
+    <div>
+        @{
+            Html.RenderAction("GetAddNewLink");
+        }
+        <table border="1">
+            <tr>
+                <th>Employee Name</th>
+                <th>Salary</th>
+            </tr>
+            @foreach (EmployeeViewModel item in Model.Employees)
+            {
+                <tr>
+                    <td>@item.EmployeeName</td>
+                    <td style="background-color:@item.SalaryColor">@item.Salary</td>
+                </tr>
+            }
+        </table>
+    </div>
+}

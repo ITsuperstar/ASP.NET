@@ -1,0 +1,29 @@
+﻿a{      /* 统一设置所以样式 */
+     font-family:Arial;
+     font-size:12px;
+     text-align:center;
+     margin:3px;
+} 
+
+a:link ,a:visited{  /* 超链接正常状态、被访问过的样式 */
+    color:#A62020;
+    padding:4px 10px 4px 10px;
+    background-color:#ecd8bd;
+    text-decoration:none;
+ 
+    border-top:1px solid #EEEEEE; /* 边框实现阴影效果 */
+    border-left:1px solid #EEEEEE;
+    border-bottom:1px solid #717171;
+    border-right:1px solid #717171;
+    transition:color 0.4s ease-in-out;
+}
+
+a:hover{       /* 鼠标指针经过时的超链接 */
+    color:#821818;     /* 改变文字颜色 */
+    padding:5px 8px 3px 12px;  /* 改变文字位置 */
+    background-color:#e2c4c9;  /* 改变背景色 */
+    border-top:1px solid #717171; /* 边框变换，实现“按下去”的效果 */
+    border-left:1px solid #717171;
+    border-bottom:1px solid #EEEEEE;
+    border-right:1px solid #EEEEEE;
+}

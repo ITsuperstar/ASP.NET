@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>登录界面</title>
+   <meta charset="utf-8" />
+   <link href="../styles/login.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="../script/ajax.js"></script>
+    <script type="text/javascript" src="../script/json2.js"></script>
+    <script type="text/javascript" src="../script/jquery-1.7.1.js"></script>
+    <script type="text/javascript">
+        function getimg() {
+            document.getElementById("Image1").src = "../createImg.ashx?" + Math.random();
+        }
+        function checkName() {
+            var username = document.getElementById("name").value;
+            ajax("../CheckUser.ashx?action=checkName&username=" + username, function (resText) {
+                if (resText == "error")
+                {
+                    $("#nameMS").html("用户名错误");
+                    $("#login").attr("disabled", "true");      //添加disabled属性
+                }
+                else {
+                    $("#nameMS").html("");
+                    $("#login").removeAttr("disabled");   //移除disabled属性
+                }
+            });
+        }
+
+        function checkPassword() {
+            var username = $("#name").val();
+            var password = $("#password").val();
+            ajax("../CheckUser.ashx?action=checkPassword&username=" + username+"&password="+password, function (resText) {
+                if (resText == "usernameError")
+                {
+                    $("#nameMS").html("用户名错误");
+                }
+                else if (resText == "passwordError")
+                {
+                    $("#nameMS").html("");
+                    $("#passwordMS").html("密码错误");
+                }
+               else {
+                   $("#passwordMS").html("");
+               }
+            });
+        }
+
+        function checkYZM() {
+            var idCode = $("#YZM").val();
+            ajax("../CheckUser.ashx?action=checkYZM&idCode=" + idCode, function (resText) {
+                if (resText == "error")
+                {
+                    $("#YZMMS").html("验证码错误");
+                    $("#Image1").attr("src", "../createImg.ashx?" + Math.random());
+                    return false;
+                }
+                else
+                {
+                    $("#YZMMS").html("");
+                    return true;
+                }
+            });
+        }
+
+        function checkLogin(th) {
+            var username = $("#name").val();
+            var password = $("#password").val();
+            var idCode = $("#YZM").val();
+            //if (checkYZM())
+            {
+                ajax("../CheckUser.ashx?action=checkLogin&username=" + username + "&password=" + password + "&idCode=" + idCode, function (resText) {
+                    if (resText == "error") {
+                        alert("用户名或密码错误！");
+                    }
+                    else if (resText == "YZMerror") {
+                        alert("验证码错误！");
+                        $("#Image1").attr("src", "../createImg.ashx?" + Math.random());
+                    }
+                    else
+                    {
+                        window.location.href = "../main.ashx";
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="outside">
+	<div class="out">
+		<p class="head">学生信息管理系统</p>
+		<div class="in">
+		<div>
+			<table cellspacing="5">
+				<tr>
+					<th>用户名：</th>
+					<td><input type="text"  name="name" id="name" onblur="checkName()" value="" placeholder="在此输入用户名" /></td>
+                    <td><font color="red" id="nameMS"></font></td>
+				</tr>
+
+				<tr>
+					<th>密码：</th>
+					<td><input type="password" name="password"   id="password" onblur="checkPassword()"  value="" placeholder="在此输入密码"/></td>
+                    <td><font color="red" id="passwordMS"></font></td>
+				</tr>
+
+				<tr>
+					<th>验证码：</th>
+					<td><input type="text" name="YZM" id="YZM" onblur="checkYZM()" value=""  placeholder="在此输入验证码" /></td>
+                    <td><img id="Image1" style="width:100%;height:24px;" src="../createImg.ashx" alt=""  onclick="getimg()"  title="点击更换" /></td>
+				</tr>
+                <tr><th></th><td colspan="3"><font color="red" id="YZMMS"></font></td></tr>
+			</table>
+
+		<p><input type="button" value="登陆" id="login" onclick="checkLogin(this)"/></p>
+		</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

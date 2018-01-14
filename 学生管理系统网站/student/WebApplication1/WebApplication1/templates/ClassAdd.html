@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>班级新增</title>
+    <script type="text/javascript" src="../script/check.js"></script>
+    <script type="text/javascript">
+        function checkClass(th) {
+            var id = th.id;
+            if (id == "classname") {
+                if (document.getElementById(id).value == "") {
+                    document.getElementById("classnameMS").innerHTML = "班级名称不能为空！";
+                    document.getElementById("store").disabled = "disabled";
+                }
+                else {
+                    if (checkClassName(th)) {
+                        document.getElementById("classnameMS").innerHTML = "";
+                        document.getElementById("store").disabled = "";
+                    }
+                    else {
+                        document.getElementById("classnameMS").innerHTML = "请输入符合规范的班级名称！";
+                        document.getElementById("store").disabled = "disabled";
+                    }
+                }
+            }
+            else if (id == "classnumber") {
+                if (checkClassNumber(th)) {
+                    document.getElementById("classnumberMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("classnumberMS").innerHTML = "请输入符合规范的教室号！";
+                }
+            }
+        }
+
+        function sub() {
+            if (document.getElementById("classname").value == "") {
+                alert("班级名称不能为空！");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="../ClassAdd.ashx" method="post">
+        <table>
+            <tr> <td>班级名称：</td> <td><input type="text" name="classname" id="classname" onblur="checkClass(this)" value="$Data.classname"/>
+                    <td><font color="red" id="classnameMS"></font></td></tr>
+            <tr> <td>教室号：</td> <td><input type="text" name="classnumber"  id="classnumber" onblur="checkClass(this)" value="$Data.classnumber"/></td>
+                   <td><font color="red" id="classnumberMS"></font></td></tr>
+            <tr> <td>班主任老师：</td> 
+                 <td><select name="tname" style="height:25px;">
+                     #foreach($Data in $Data.tnames)
+                     <option value="$Data.tid">$Data.tname</option>
+                     #end
+                    </select>
+                </td> </tr>
+            <tr> <td><input type="submit"  id="store" onclick="sub()" value="保存" /></td> </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>test2</title>
+    <style>
+        #container{
+        width:980px;/*整体内容居中显示*/
+        margin:0px auto;
+    } 
+    /*注册页面开始*/
+    #register{
+        width:100%;
+        margin:0px auto;
+        border:0px;
+        padding-top:60px;
+        background:url(images/reg_bg.gif) no-repeat;
+    }      
+    #register td{
+        line-height:30px;
+    }
+    .register_left{
+        width:150px;
+        text-align:right;
+    } 
+    .register_right{
+        width:300px;
+        text-align:left;
+        vertical-align:top;
+    } 
+    .reg_text,.reg_small{
+        height:16px;
+        border:#333 1px solid;
+    }
+    .reg_text{
+        width:130px;
+    }     
+    .reg_small{
+        width:30px;
+    }
+    #register .submit,#register .reset{
+        background-repeat:no-repeat;
+        width:80px;
+        height:34px;
+        border:0;
+        background-color:transparent; /*背景透明*/
+    }
+    #register .submit{
+        background-image:url(images/submit.gif);
+    }
+    #register .reset{
+        background-image:url(images/reset.gif);
+    }     
+    /*注册页面结束*/
+    </style>
+</head>
+
+<body>
+    <div id="container">
+    <form action="" method="post">
+    <table id="register">
+     <tr>
+        <td class="register_left">名字：</td>
+        <td><input id="realname" type="text"  class="reg_text"/></td>
+        <td rowspan="12" class="register_right">
+            <h4><img src="images/read.gif" alt="alt" />阅读贵美网服务协议 </h4>
+            <textarea cols="30" rows="15" name="agreement">欢迎阅读服务条款协议，本协议阐述之条款和条件适用于您使用Gmgw.com网站的各种工具和服务。
+          本服务协议双方为本站与本站用户，本服务协议具有合同效力。
+          本站的权利和义务：
+            ......
+      </textarea></td>
+      </tr>
+      <tr>
+        <td class="register_left">姓氏：</td>
+        <td><input id="xing" type="text"  class="reg_text"/></td>
+      </tr>
+      <tr>
+        <td class="register_left">登录名：</td>
+        <td><input id="username" type="text"  class="reg_text"/>（可包含 a-z、0-9 和下划线） </td>
+      </tr>
+      <tr>
+        <td class="register_left">密码：</td>
+        <td><input id="pwd" type="text"  class="reg_text"/>（至少包含 6 个字符）</td>
+      </tr>
+      <tr>
+        <td class="register_left">再次输入密码：</td>
+        <td><input id="repwd" type="text"  class="reg_text"/></td>
+      </tr>
+      <tr>
+        <td class="register_left">电子邮箱：</td>
+        <td><input id="email" type="text"  class="reg_text"/>（必须包含 @ 字符） </td>
+      </tr>
+      <tr>
+        <td class="register_left">性别：</td>
+        <td><input name="sex" type="radio" id="male"/><label for="male">男</label>
+            <input name="sex" type="radio" id="female"/><label for="female">女</label></td>
+      </tr>
+      <tr>
+        <td class="register_left">头像：</td>
+        <td> <input type="file" /></td>
+      </tr>
+      <tr>
+        <td class="register_left">爱好：</td>
+        <td><input name="hobby" type="checkbox" id="run"/><label for="run">运动</label>
+           <input name="hobby" type="checkbox" id="chat"/><label for="chat">聊天</label>   
+           <input name="hobby" type="checkbox" id="play"/><label for="play">玩游戏</label> </td>
+      </tr>
+      <tr>
+        <td class="register_left">出生日期：</td>
+        <td><input class="reg_small" id="nYear" value="yyyy" />
+        &nbsp;年&nbsp;
+                   <select id="nMonth" name="nMonth">
+                     <option value="" selected="selected">[选择月份]</option>
+                     <option value="0">一月</option>
+                     <option value="1">二月</option>
+                     <option value="2">三月</option>
+                     <option value="3">四月</option>
+                     <option value="4">五月</option>
+                     <option value="5">六月</option>
+                     <option value="6">七月</option>
+                     <option value="7">八月</option>
+                     <option value="8">九月</option>
+                     <option value="9">十月</option>
+                     <option value="10">十一月</option>
+                     <option value="11">十二月</option>
+                  </select>&nbsp;月&nbsp;
+                  <input id="nDay" class="reg_small" value="dd"/>日
+            </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td><input type="submit" class="submit" value=" " />
+           <input type="reset" value=" " class="reset" />
+           </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table></form></div>
+    </body>
+</html>

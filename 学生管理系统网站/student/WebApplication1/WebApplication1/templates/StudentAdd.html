@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>学生新增</title>
+   <script type="text/javascript" src="../script/check.js"></script>
+    <script type="text/javascript">
+        function checkStudent(th)
+        {
+            var id = th.id;
+            if (id == "name") {
+                if (document.getElementById(id).value == "") {
+                    document.getElementById("nameMS").innerHTML = "姓名不能为空！";
+                    document.getElementById("store").disabled = "disabled";
+                }
+                else {
+                    if (checkName(th)) {
+                        document.getElementById("nameMS").innerHTML = "";
+                        document.getElementById("store").disabled = "";
+                    }
+                    else {
+                        document.getElementById("nameMS").innerHTML = "请输入符合规范的姓名！";
+                        document.getElementById("store").disabled = "disabled";
+                    }
+                }
+            }
+            else if (id == "birthday") {
+                    if (checkBirthday(th)) {
+                        document.getElementById("birthdayMS").innerHTML = "";
+                    }
+                    else {
+                        document.getElementById("birthdayMS").innerHTML = "规范的生日格式：19950608";
+                    }
+            }
+           else  if (id == "height") {
+                if (checkHeight(th)) {
+                    document.getElementById("heightMS").innerHTML = "";
+                }
+                else {
+                    document.getElementById("heightMS").innerHTML = "请输入符合规范的身高";
+                }
+           }
+        }
+        function sub() {
+            if (document.getElementById("name").value == "") {
+                alert("姓名不能为空！");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="../StudentAdd.ashx" method="post">
+        <table>
+            <tr>
+                <td>姓名：</td>
+                <td>
+                    <input type="text" name="name" id="name" onblur="checkStudent(this)"  value="" /></td>
+                <td ><font color="red" id="nameMS"></font></td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td>
+                    <select name="sex" style="height: 25px; width: 50px;">
+                         <option value="男">男</option>
+                        <option value="女">女</option>
+                    </select>
+                  </td>
+            </tr>
+            <tr>
+                <td>生日：</td>
+                <td>
+                    <input type="text" name="birthday" id="birthday" value="" onblur="checkStudent(this)" /></td>
+                   <td ><font color="red" id="birthdayMS"></font></td>
+            </tr>
+            <tr>
+                <td>身高：</td>
+                <td>
+                    <input type="text" name="height" id="height" value="" onblur=" checkStudent(this)" /></td>
+                <td>(cm)</td>
+                 <td ><font color="red" id="heightMS"></font></td>
+            </tr>
+            <tr>
+                <td>所属班级：</td>
+                <td>
+                    <select name="classname" style="height: 25px;">
+                        #foreach($Data in $Data.classnames)
+                    <option value="$Data.cid">$Data.classname</option>
+                        #end
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>是否特长生：</td>
+                <td>
+                  <select name="specialties" style="height: 25px; width: 50px;">
+                         <option value="是">是</option>
+                        <option value="否">否</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" id="store"  value="保存" onclick="sub()"/></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

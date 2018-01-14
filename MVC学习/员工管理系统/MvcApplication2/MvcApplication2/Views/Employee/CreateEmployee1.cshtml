@@ -1,0 +1,69 @@
+﻿@{   Layout = null;  }
+@using MvcApplication2.ViewModels
+@model CreateEmployeeViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateEmployee</title>
+    <script type="text/javascript" src="~/Scripts/Validations.js"></script>
+    <script type="text/javascript">
+        function ResetForm() {
+            document.getElementById('TxtFName').value = "";
+            document.getElementById('TxtLName').value = "";
+            document.getElementById('TxtSalary').value = "";
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <form action="/Employee/SaveEmployee" method="post">
+            <table>
+                <tr>
+                    <td>First Name:</td>
+                    <td>
+                        <input type="text" id="TxtFName" name="FirstName" value="@Model.FirstName" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right;">
+                        @Html.ValidationMessage("FirstName")
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Name:
+                    </td>
+                    <td>
+                        <input type="text" id="TxtLName" name="LastName" value="@Model.LastName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right;">
+                        @Html.ValidationMessage("LastName")
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Salary:
+                    </td>
+                    <td>
+                        <input type="text" id="TxtSalary" name="Salary" value="@Model.Salary" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:right;">
+                        @Html.ValidationMessage("Salary")
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="BtnSubmit" value="Save Employee" onclick="IsValid();"/>
+                        <input type="submit" name="BtnSubmit" value="Cancel" />
+                        <input type="button" name="BtnReset" value="Reset" onclick="ResetForm();" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

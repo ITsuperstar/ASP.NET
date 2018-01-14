@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>登陆</title>
+    <link rel="stylesheet" type="text/css" href="../css/amazeui.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/login.css" />
+    <script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../js/ajax.js"></script>
+    <script type="text/javascript" src="../js/json2.js"></script>
+    <script type="text/javascript">
+        // $("#verify_img")
+        $(document).ready(function () {
+            $("#verify_img").click(function () {
+                $("#verify_img").attr("src", "../createImg.ashx?" + Math.random());
+            });
+
+            $("#user_name").bind('input propertychange',function () {
+                var username = $("#user_name").val();
+                ajax("../CheckUser.ashx?action=checkName&username=" + username, function (resText) {
+                    if (resText == "error") {
+                        $("#usernameMS > img").attr("src", "../images/login/usererror.png");
+                        $("#login").attr("disabled", "true");      //添加disabled属性
+                    }
+                    else {
+                        $("#usernameMS > img").attr("src", "../images/login/userright.png");
+                        $("#login").removeAttr("disabled");   //移除disabled属性
+                    }
+                });
+            });
+
+            $("#user_pwd").blur(function () {
+                var username = $("#user_name").val();
+                var password = $("#user_pwd").val();
+                ajax("../CheckUser.ashx?action=checkPassword&username=" + username + "&password=" + password, function (resText) {
+                    if (resText == "usernameError") {
+                        $("#usernameMS > img").attr("src", "../images/login/usererror.png");
+                    }
+                    else if (resText == "passwordError") {
+                        $("#usernameMS > img").attr("src", "../images/login/userright.png");
+                        $("#passwordMS > img").attr("src", "../images/login/usererror.png");
+                    }
+                    else {
+                        $("#passwordMS > img").attr("src", "../images/login/userright.png");
+                    }
+                });
+            });
+            
+            $("#captcha").blur(function () {
+                var idCode = $("#captcha").val();
+                ajax("../CheckUser.ashx?action=checkYZM&idCode=" + idCode, function (resText) {
+                    if (resText == "error") {
+                        $("#yzmMS > img").attr("src", "../images/login/usererror.png");
+                        $("#verify_img").attr("src", "../createImg.ashx?" + Math.random());
+                    }
+                    else {
+                        $("#yzmMS > img").attr("src", "../images/login/userright.png");
+                    }
+                });
+            });
+
+            $("#login").click(function () {
+                var username = $("#user_name").val();
+                var password = $("#user_pwd").val();
+                var idCode = $("#captcha").val();
+                ajax("../CheckUser.ashx?action=checkLogin&username=" + username + "&password=" + password + "&idCode=" + idCode, function (resText) {
+                    if (resText == "error") {
+                        alert("用户名或密码错误！");
+                    }
+                    else if (resText == "YZMerror") {
+                        alert("验证码错误！");
+                        $("#verify_img").attr("src", "/createImg.ashx?" + Math.random());
+                    }
+                    else if (resText == "exist") {
+                        window.location.href = "/user.ashx";
+                    }
+                });
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="top">
+        <div style="float: left; margin-right: 20px;">
+            <a href="#">
+                <img src="../images/login/logo.png" /></a>
+        </div>
+        <div style="float: left;">
+            <p>欢迎登陆影碟出租用户中心</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="login-wrapper">
+            <p>欢迎登录</p>
+            <div class="input-wrapper">
+                <span class="icon icon-user"></span>
+                <input type="text" name="user_name" id="user_name" placeholder="请输入用户编号" style="width: 215px;" />
+                <span id="usernameMS">
+                    <img src="../images/login/userinit.png" /></span>
+            </div>
+
+            <div class="input-wrapper">
+                <span class="icon icon-password"></span>
+                <input type="password" name="user_pwd" id="user_pwd" placeholder="请输入密码" style="width: 215px;" />
+                <span id="passwordMS">
+                    <img src="../images/login/userinit.png" /></span>
+            </div>
+
+            <div class="input-wrapper">
+                <span class="icon icon-image"></span>
+                <input name="captcha" type="text" id="captcha" placeholder="请输入验证码" style="width: 130px;" />
+                <img id="verify_img" src="/createImg.ashx" alt="验证码" title="点击更换" width="76" height="30" />
+                <span id="yzmMS">
+                    <img src="../images/login/userinit.png" /></span>
+            </div>
+            <button id="login" style="margin-top: 15px;">登录</button>
+        </div>
+    </div>
+</body>
+</html>

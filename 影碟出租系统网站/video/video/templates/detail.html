@@ -1,0 +1,369 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>影碟出租系统 | 影片详情</title>
+    <!--mobile apps-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Rental Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+		addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <!--mobile apps-->
+    <!--Custom Theme files -->
+    <link href="/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="/css/prettySticky.css" type="text/css">
+    <!-- //Custom Theme files -->
+    <!-- js -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <!-- //js -->
+    <!-- start-smoth-scrolling-->
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+
+    </script>
+    <!--//end-smoth-scrolling-->
+
+    <script type="text/javascript">
+        <!--提交评论时，js实现数据验证-->
+        function sub(th) {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+            var result = "";
+            if (name == ""||name=="姓名") {
+                result = result + "姓名不能为空；";
+            }
+            if (email == "" || email == "邮箱 (不会公开)*") {
+                result = result + "邮箱不能为空；";
+            }
+            if (message == "" || message == "您的评论") {
+                result = result + "评论不能为空；";
+            }
+            if (result != "") {
+                alert(result);
+                event.preventDefault();   //此处阻止提交表单  
+            }
+        }
+    </script>
+
+     <!-- jquery和js结合起来，实现对评论区的操作-->
+     <script type="text/javascript">        
+         $(document).ready(function () {
+             //onfocus 事件在对象获得焦点时发生
+             $("#name").focus(function () {
+                 if ($("#name").val() == "姓名")
+                     $("#name").val() = "";
+             });
+             //onblur事件是当用户离开输入字段时对其进行验证
+             $("#name").blur(function () {
+                 if ($("#name").val() == "")
+                     $("#name").val() = "姓名";
+             });
+
+             //js实现输入邮箱的操作
+             $("#email").focus(function () {
+                 if (document.getElementById("email").value == "邮箱 (不会公开)*")
+                     document.getElementById("email").value = "";
+             });
+             $("#email").blur(function () {
+                 if (document.getElementById("email").value == "")
+                     document.getElementById("email").value = "邮箱 (不会公开)*";
+             });
+
+             //js实现评论区的操作
+             $("#message").focus(function () {
+                 if (document.getElementById("message").value == "您的评论")
+                     document.getElementById("message").value = "";
+             });
+             $("#message").blur(function () {
+                 if (document.getElementById("message").value == "")
+                     document.getElementById("message").value = "您的评论";
+             });
+
+         });
+     </script>
+
+</head>
+
+<body>
+    <!--banner-->
+    <div id="home" class="banner about-banner">
+        <div class="banner-info">
+            <!--navigation-->
+            <div class="top-nav">
+                <nav>
+                    <div class="container">
+                        <div class="navbar-header logo">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <h1><a href="/index.ashx">影碟出租网</a></h1>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-right">
+                                <li><a href="/index.ashx" class="link-kumya active"><span data-letters="首页">首页</span></a></li>
+                                <li><a href="/search.ashx" class="link-kumya"><span data-letters="搜索">搜索</span></a></li>
+                                <li><a href="/recommend.ashx" class="link-kumya"><span data-letters="推荐">推荐</span></a></li>
+                                <li><a href="/help.ashx" class="link-kumya"><span data-letters="帮助">帮助</span></a></li>
+                                <li><a href="/user.ashx" class="link-kumya"><span data-letters="用户中心">用户中心</span></a></li>
+                                <li><a href="/contact.ashx" class="link-kumya"><span data-letters="联系">联系</span></a></li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!--//navigation-->
+            <div class="banner-text">
+                <h2>我们将帮你找到你梦寐以求的影碟</h2>
+            </div>
+        </div>
+    </div>
+    <!--//banner-->
+    <!--single-page-->
+    <div class="single-page blog">
+
+        <div class="container">
+            <div class="col-md-8 single-page-left">
+
+                <div class="single-page-info" style="text-align:right;">
+                    #foreach($videoinfo in $Data.videoinfo) 
+                   <img src="$videoinfo.imageurl" alt="" style="width:350px;"/>
+                   #end
+                    <div class="comment-icons" style="text-align:left;">
+                        <ul>
+                            <li><a href="#"><i class="glyphicon glyphicon-user" aria-hidden="true"></i>用户</a></li>
+                            <li><i class="glyphicon glyphicon-time" aria-hidden="true"></i>2018年1月1日</li>
+                            <li><a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>标签: 0</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-comment" aria-hidden="true"></i>评论: 10</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></i>15</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="admin-text">
+                    <h5>管理员</h5>
+                    <div class="admin-text-left">
+                        <a href="#">
+                            <img src="/images/icon2.png" alt="" /></a>
+                    </div>
+                    <div class="admin-text-right">
+                        <p>
+                            大家觉得这部电影怎么样？快快发表你的评论吧！
+                        </p>
+                        <span><a href="#">管理员</a>：请大家文明发帖</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+
+                <!--related-posts-->
+                <div class="row related-posts">
+                    <h3>相关推荐</h3>
+
+                    #foreach($recommend in $Data.recommend)
+					<div class="col-xs-6 col-md-3 related-grids">
+                        <a href="/detail.ashx?videoid=$recommend.videoid" class="thumbnail">
+                            <img src="$recommend.imageurl" alt="" />
+                        </a>
+                        <h5><a href="/detail.ashx?videoid=$recommend.videoid">$recommend.videoname</a></h5>
+                    </div>
+                    #end
+
+                </div>
+
+                <!--//related-posts-->
+                <div class="response">
+                    <h3>评论</h3>
+                     
+                    #foreach($review in $Data.review)
+                    <div class="media response-info">
+                        <div class="media-left response-text-left">
+                            <a href="#">
+                                <img class="media-object" src="/images/icon2.png" alt="" />
+                            </a>
+                            <h5><a href="#">$review.name</a></h5>
+                        </div>
+                        <div class="media-body response-text-right">
+                            <p>
+                                $review.message
+                            </p>
+                            <ul>
+                                <li>$review.reviewtime.Year年$review.reviewtime.Month月$review.reviewtime.Day日</li>
+                                <li><a href="#">回复</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    #end
+
+                    <div class="media response-info">
+                        <div class="media-left response-text-left">
+                            <a href="#">
+                                <img class="media-object" src="/images/icon2.png" alt="" />
+                            </a>
+                            <h5><a href="#">用户A</a></h5>
+                        </div>
+                        <div class="media-body response-text-right">
+                            <p>
+                                这部电影演的很逼真，有良好的的口碑，真心推荐去观看。
+                            </p>
+                            <ul>
+                                <li>2018年1月1日</li>
+                                <li><a href="#">回复</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="media response-info">
+                        <div class="media-left response-text-left">
+                            <a href="#">
+                                <img class="media-object" src="/images/icon2.png" alt="" />
+                            </a>
+                            <h5><a href="#">用户A</a></h5>
+                        </div>
+                        <div class="media-body response-text-right">
+                            <p>
+                                好评！这家店是一家良心店，服务态度很好，下次还会光顾。
+                            </p>
+                            <ul>
+                                <li>2018年1月1日</li>
+                                <li><a href="#">回复</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="coment-form">
+                    <h3>留下你的脚印</h3>
+                    <form method="post" name="review" action="/reviewSubmit.ashx">
+                         #foreach($videoinfo in $Data.videoinfo) 
+                        <input type="hidden" name="videoid" value="$videoinfo.videoid"  />
+                        #end
+                        <input type="text" value="姓名 "  id="name" name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '姓名';}" required=""/>
+                        <input type="text" value="邮箱 (不会公开)*" id="email" name="email"/ >
+                        <textarea  id="message"  name="message">您的评论</textarea>
+                        <input type="submit" value="提交评论" id="submit" name="submit" onclick="sub(this)">
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-4 blog-right">
+                <h3>影片详情</h3>
+                <ul class="catgry">
+                    #foreach($videoinfo in $Data.videoinfo)
+					<li><a href="#"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>影片名：$videoinfo.videoname</a></li><br />
+                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>价格: $videoinfo.price 元/月</a></li><br />
+                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>数量: $videoinfo.number</a></li><br />
+                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>上市日期: $videoinfo.buydate.Year年$videoinfo.buydate.Month月$videoinfo.buydate.Day日</a></li><br />
+                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>简介: $videoinfo.describe</a></li><br />
+                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>最新评论: 影片值得一看</a></li><br />
+                    #end
+                </ul>
+                <div class="blog-tags">
+                    <h3>最新标签</h3>
+                    <ul>
+                        <li><a href="#">动作</a></li>
+                        <li><a href="#">爱情</a></li>
+                        <li><a href="#">喜剧</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">科幻</a></li>
+                        <li><a href="#">动画</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">大陆</a></li>
+                        <li><a href="#">香港</a></li>
+                        <li><a href="#">美国</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">00年代</a></li>
+                        <li><a href="#">90年代</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+
+    <!--//single-page-->
+    <!--footer-->
+    <div class="footer">
+        <div class="container">
+            <div class="col-md-4 footer-grids">
+                <h3>评论</h3>
+                <p>这个网站很好用，用户体验很好，值得推广。希望您动动手指给同伴分享一下。</p>
+
+                <br />
+                <div class="bshare-custom icon-medium-plus">
+                    <a title="分享到" href="http://www.bShare.cn/" id="bshare-shareto" class="bshare-more">分享到</a>
+                    <a title="分享到QQ空间" class="bshare-qzone"></a>
+                    <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+                    <a title="分享到人人网" class="bshare-renren"></a>
+                    <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+                </div>
+                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=3&amp;lang=zh"></script>
+                <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+
+            </div>
+            <div class="col-md-3 footer-grids">
+                <h3>联系我们</h3>
+                <p>
+                    地址：中国保定河北大学新校区五四东路2666号<br>
+                    <span>电话：15930779698</span>
+                    <span>邮箱：2273009930@qq.com</span>
+                </p>
+            </div>
+            <div class="col-md-5 footer-grids">
+                <h3>照片墙</h3>
+                <a class="footer-img" href="#">
+                    <img src="/images/f1.jpg" alt="" /></a>
+                <a class="footer-img" href="#">
+                    <img src="/images/f2.jpg" alt="" /></a>
+                <a class="footer-img" href="#">
+                    <img src="/images/f3.jpg" alt="" /></a>
+            </div>
+            <div class="clearfix"></div>
+            <div class="footer-copy">
+                <p>© 2018 影碟出租. 保留所有权利 | <a href="#">河北大学网络空间安全与计算机学院网工二班第一组成员</a>设计</p>
+            </div>
+        </div>
+    </div>
+    <!--//footer-->
+    <!-- script-for prettySticky -->
+    <script src="/js/prettySticky.js"></script>
+    <!--//script-for prettySticky -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/bootstrap.js"></script>
+</body>
+
+</html>

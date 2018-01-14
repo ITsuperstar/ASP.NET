@@ -1,0 +1,1 @@
+update proinfo set proimageurl='/images/product/product02/'+proimageurl,proclassid=2,proname='工具五金'+cast(proid as nvarchar),proprice=proid+1 where proid>=10 and proid<=50

@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>test1</title>
+    <style>
+    #Container{
+        width:980px;
+        margin:0px auto;/*整体内容居中显示*/
+    }
+    /*商品列表页样式开始*/
+    #main{
+        width:100%;
+        margin:0px auto;
+        border:0px;
+        padding-top:34px;
+        background:url(images/list_bg.gif) no-repeat;
+    } 
+    .td_1{width:10%;}
+    .td_2{width:20%;}
+    .td_3{width:50%;}
+    .td_4{width:20%;}
+     
+    .a_c td, .title td{
+         text-align:center;
+         line-height:30px;
+         /*每行的底部灰色虚线*/
+         border-bottom:1px  #CCCCCC dashed;
+         padding:10px 0px;
+     }
+     .title td{
+         font-weight:bold;
+         }
+     .a_c td{
+         line-height:30px;
+      }
+      /*商品列表页样式开始*/
+       </style>
+</head>
+<body>
+    <div id="container">
+     <table id="main">
+        <tr class="title">
+          <td class="td_1"><input type="checkbox" value="全选"  /> 全选</td>
+          <td class="td_2">商品图片</td>
+          <td class="td_3">商品名称/出售者/联系方式</td>
+          <td class="td_4">价格</td>
+        </tr>
+        <tr class="a_c">
+          <td><input type="checkbox" value="1" name="auction_id" /></td>
+          <td><a href="#" title="商品详细情况"><img src="images/list0.jpg" alt="alt" /></a></td>
+          <td><a  href="#">杜比环绕，家庭影院必备，超真实享受</a><br />
+              出售者：<a href="#">ling112233</a> <br />
+              <a href="#"><img src="images/online_pic.gif" alt="alt" /></a> &nbsp;&nbsp;
+              <a href="#"><img src="images/list_tool_fav1.gif" alt="alt" /> 收藏</a>   
+          </td>
+          <td>一口价<br /> 2833.0</td>
+        </tr>
+        <tr class="a_c">
+          <td><input type="checkbox" value="2" name="auction_id" /></td>
+          <td><a href="#" title="商品详细情况">
+                         <img src="images/list1.jpg" alt="alt" /></a></td>
+          <td><a  href="#">NVDIA 9999GT 512MB 256bit极品显卡，不容错过</a>
+              <br />出售者：<a href="#">aipiaopiao110</a>
+              <br /><a href="#"><img src="images/online_pic.gif" alt="alt" /></a> &nbsp;&nbsp;
+          <a href="#"><img src="images/list_tool_fav1.gif" alt="alt" /> 收藏</a>
+              </td>
+          <td>一口价<br />2460.0</td>
+        </tr>
+        <tr class="a_c">
+          <td><input type="checkbox" value="3" name="auction_id" /></td>
+          <td><a href="#" title="商品详细情况">
+                <img src="images/list2.jpg" alt="alt" /></a></td>
+          <td><a  href="#">精品热卖：高清晰，30寸等离子电视</a>
+             <br />出售者：<a href="#">阳光的挣扎</a>
+             <br /> <a href="#"><img src="images/online_pic.gif" alt="alt" /></a> &nbsp;&nbsp;
+            <a href="#"><img src="images/list_tool_fav1.gif" alt="alt" /> 收藏</a>
+             </td>
+          <td>一口价<br />18880</td>
+        </tr>
+       
+        <tr class="a_c">
+          <td><input type="checkbox" value="4" name="auction_id" /></td>
+          <td> <a href="#" title="商品详细情况">
+              <img src="images/list3.jpg" alt="alt" /></a>
+            </td>
+          <td ><a  href="#">Sony索尼家用最新款笔记本 </a>
+               <br />出售者：<a href="#">疯狂的镜无</a>
+               <br /><a href="#"><img src="images/online_pic.gif" alt="alt" /></a> &nbsp;&nbsp;
+              <a href="#"><img src="images/list_tool_fav1.gif" alt="alt" /> 收藏</a>
+               </td>
+          <td>一口价<br />5889.0</td>
+        </tr>
+      </table>
+    </div>
+</body>
+</html>

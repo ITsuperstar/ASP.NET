@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Class</title>
+    <meta charset="utf-8" />
+    <link href="../styles/Main.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../script/ajax.js"></script>
+    <script type="text/javascript" src="../script/json2.js"></script>
+    <script type="text/javascript">
+        function ModifyHref(th) {
+            var id = th.id;
+            document.getElementById(id).href = "../ClassMain.ashx?Search=" + document.getElementById("SearchText").value;
+            //document.getElementById(id).setAttribute("href","www.xxx.com");
+        }
+        function paging(th) {
+            var page = th.id;
+            document.getElementById("currentPage").value = page;
+            ajax("../Page.ashx?action=class&PageNumber=" + page, function (resText) {
+                var persons = JSON.parse(resText);
+                var tab = document.getElementById("myTable");
+                var rowNum = tab.rows.length;
+                for (var j = (rowNum - 1) ; j >= 2; j--) {
+                    tab.deleteRow(j);
+                }
+                for (var i = 0; i < persons.length; i++) {
+                    var p = persons[i];
+                    var x = document.getElementById("myTable").insertRow();
+                    x.insertCell(0).innerHTML = "<a href=" + "../ClassEdit.ashx?EditID=" + p.cid + ">" + p.classname + "</a>";
+                    x.insertCell(1).innerHTML = p.classnumber;
+                    x.insertCell(2).innerHTML = p.tname;
+                    x.insertCell(3).innerHTML = "<a href=" + "javascript:void(0)" + " id=" + p.cid + " onclick=" + "deleteCurrentRow(this)" + ">删除</a>";
+                }
+            });
+        }
+        function deleteCurrentRow(th) {
+            if (confirm("确定要删除?")) {
+                var page = document.getElementById("currentPage").value;
+                ajax("../Delete.ashx?action=class&PageNumber=" + page + "&DelID=" + th.id, function (resText) {
+                    if (resText == "error") { alert("该班级还有学生，不允许删除！"); }
+                    else {
+                        var persons = JSON.parse(resText);
+                        var tab = document.getElementById("myTable");
+                        var rowNum = tab.rows.length;
+                        for (var j = (rowNum - 1) ; j >= 2; j--) {
+                            tab.deleteRow(j);
+                        }
+                        for (var i = 0; i < persons.length; i++) {
+                            var p = persons[i];
+                            var x = document.getElementById("myTable").insertRow();
+                            x.insertCell(0).innerHTML = "<a href=" + "../ClassEdit.ashx?EditID=" + p.cid + ">" + p.classname + "</a>";
+                            x.insertCell(1).innerHTML = p.classnumber;
+                            x.insertCell(2).innerHTML = p.tname;
+                            x.insertCell(3).innerHTML = "<a href=" + "javascript:void(0)" + " id=" + p.cid + " onclick=" + "deleteCurrentRow(this)" + ">删除</a>";
+                        }
+                    }
+                });
+            }
+            else { }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <p><font size="30" color="red">学生管理系统</font></p>
+        </div>
+
+        <div id="main">
+            <div id="first">
+                <div class="content1">
+                    <ul>
+                        <li><a href="../StudentMain.ashx">学生管理</a></li>
+                        <li><a href="../TeacherMain.ashx">老师管理</a></li>
+                        <li><a href="../ClassMain.ashx">班级管理</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="second">
+                <div class="content2">
+                    <table cellspacing="5" id="myTable">
+                        <tr>
+                            <td><a href="../ClassAdd.ashx">新增</a></td>
+                            <td />
+                            <td colspan="2"><input type="text" name="Search" id="SearchText"/></td>
+                            <td><a href="../ClassMain.ashx" id="search" onclick="ModifyHref(this)" >查询</a></td>
+                        </tr>
+                        <tr>
+                            <th>班级名称</th>
+                            <th>教室号</th>
+                            <th>班主任老师</th>
+                            <th>删除</th>
+                        </tr>
+                        #foreach($p in $Data.Persons)
+                        <tr>
+                          <td><a href="../ClassEdit.ashx?EditID=$p.cid">$p.classname</a></td>
+                          <td style="text-align: center;">$p.classnumber</td>
+                          <td style="text-align: center;">$p.tname</td>
+                          <td style="text-align: center;"><a href="javascript:void(0)"  id="$p.cid" onclick="deleteCurrentRow(this)" >删除</a></td> 
+                        </tr>
+                        #end
+                    </table>
+                </div>
+               <div id="thrid">
+                  #foreach($pd in $Data.PageData)
+                 <a href="javascript:void(0)" onclick="paging(this)"  id="$pd.ID">第$pd.Title页</a>
+                 #end
+                  </div>
+            </div>
+        </div>
+        <div id="footer">
+            <a href="../Feedback.ashx">反馈</a>
+        </div>
+
+    </div>
+        <input type="hidden" name="currentPage"  id="currentPage" value="$Data.currentPage" />
+</body>
+</html>

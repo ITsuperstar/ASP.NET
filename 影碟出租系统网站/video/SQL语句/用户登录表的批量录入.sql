@@ -1,0 +1,2 @@
+-- Insert into clientlogin(clientid) (select clientid from clientinfo)
+--update clientlogin set password=clientid where id>=2 and id<=5

@@ -1,0 +1,13 @@
+C:\Users\Administrator\Desktop\DVDrental-\video\bin\video.dll.config
+C:\Users\Administrator\Desktop\DVDrental-\video\bin\video.dll
+C:\Users\Administrator\Desktop\DVDrental-\video\bin\video.pdb
+C:\Users\Administrator\Desktop\DVDrental-\video\bin\NVelocity.dll
+C:\Users\Administrator\Desktop\DVDrental-\video\obj\Debug\video.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\DVDrental-\video\obj\Debug\video.dll
+C:\Users\Administrator\Desktop\DVDrental-\video\obj\Debug\video.pdb
+F:\VS2012 工作目录\Web应用\自做项目\video\video\bin\video.dll
+F:\VS2012 工作目录\Web应用\自做项目\video\video\bin\video.pdb
+F:\VS2012 工作目录\Web应用\自做项目\video\video\bin\NVelocity.dll
+F:\VS2012 工作目录\Web应用\自做项目\video\video\obj\Debug\video.dll
+F:\VS2012 工作目录\Web应用\自做项目\video\video\obj\Debug\video.pdb
+F:\VS2012 工作目录\Web应用\自做项目\video\video\obj\Debug\video.csprojResolveAssemblyReference.cache

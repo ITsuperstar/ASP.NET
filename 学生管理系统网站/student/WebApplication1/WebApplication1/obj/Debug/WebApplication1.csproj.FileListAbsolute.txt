@@ -1,0 +1,16 @@
+H:\大三下学期\网络开发技术\student\WebApplication1\WebApplication1\bin\WebApplication1.dll
+H:\大三下学期\网络开发技术\student\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+H:\大三下学期\网络开发技术\student\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+H:\大三下学期\网络开发技术\student\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+H:\大三下学期\网络开发技术\student\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\网工2班\学习资料\web应用\student\WebApplication1\WebApplication1\bin\WebApplication1.dll
+E:\网工2班\学习资料\web应用\student\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+E:\网工2班\学习资料\web应用\student\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+E:\网工2班\学习资料\web应用\student\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\网工2班\学习资料\web应用\student\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\网工2班\学习资料\web应用\student\WebApplication1\WebApplication1\bin\NVelocity.dll
+F:\VS2012 工作目录\Web应用\自做项目\student\WebApplication1\WebApplication1\bin\WebApplication1.dll
+F:\VS2012 工作目录\Web应用\自做项目\student\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+F:\VS2012 工作目录\Web应用\自做项目\student\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+F:\VS2012 工作目录\Web应用\自做项目\student\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+F:\VS2012 工作目录\Web应用\自做项目\student\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache

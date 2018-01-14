@@ -1,0 +1,7 @@
+1、修改数据库中的firstmenu表，把“查看”改为“结账”，把“联系”改为“联系客服”
+2、产品分类页 添加分页！
+3、同一个html文件引用多个Jquery可能会导致冲突
+4、Jquery中$(this)用法！！！
+5、onblur()和onclick()的用法冲突
+6、用prop()方法替代attr()方法
+7、后端传DataTable给前端时，如果传的是dt.Rows，前端需要用foreach循环显示；如果传的是dt.Rows[0],前端可以直接用字段名显示。
